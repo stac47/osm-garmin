@@ -66,19 +66,25 @@ MKGMAP_DIR = "mkgmap"
 
 # Path to Splitter JAR (tiles creator)
 SPLITTER_JAR = os.path.join(LIB, SPLITTER_DIR, "splitter.jar")
+SPLITTER_OUT_DIR = os.path.join(DIST, SPLITTER_DIR)
 
 # Path to mkgmap Jar (map creator)
 MKGMAP_JAR = os.path.join(LIB, MKGMAP_DIR, "mkgmap.jar")
+MKGMAP_OUT_DIR = os.path.join(DIST, MKGMAP_DIR)
 
 
 def createDistDir():
     if not os.path.exists(DIST):
         os.mkdir(DIST)
+    if not os.path.exists(GEOFABRIK_LOCAL_DIR):
+        os.mkdir(GEOFABRIK_LOCAL_DIR)
+    if not os.path.exists(SPLITTER_OUT_DIR):
+        os.mkdir(SPLITTER_OUT_DIR)
+    if not os.path.exists(MKGMAP_OUT_DIR):
+        os.mkdir(MKGMAP_OUT_DIR)
 
 
 def download(l=DEFAULT_OSM_FILES):
-    if not os.path.exists(GEOFABRIK_LOCAL_DIR):
-        os.mkdir(GEOFABRIK_LOCAL_DIR)
     cmd = "wget %s -O %s"
     for filename in l:
         src = GEOFABRIK_FRANCE_URL + filename + EXTENSION
@@ -87,26 +93,21 @@ def download(l=DEFAULT_OSM_FILES):
 
 
 def splitMap(filename, mapid=63240001):
-    outputDir = os.path.join(DIST, SPLITTER_DIR)
-    if not os.path.exists(outputDir):
-        os.mkdir(outputDir)
     filepath = os.path.join(GEOFABRIK_LOCAL_DIR, filename + EXTENSION)
     cmd = "java -Xmx2048M -jar %s --mapid=%s --output-dir=%s %s"
-    os.system(cmd % (SPLITTER_JAR, str(mapid), outputDir, filepath))
+    os.system(cmd % (SPLITTER_JAR, str(mapid),
+                     SPLITTER_OUT_DIR, filepath))
 
 
 def createMapsFromTiles():
-    osmLocation = os.path.join(DIST, SPLITTER_DIR)
-    osmFiles = [os.path.join(osmLocation, f)
-                for f in os.listdir(osmLocation)
+    osmFiles = [os.path.join(SPLITTER_OUT_DIR, f)
+                for f in os.listdir(SPLITTER_OUT_DIR)
                 if f.endswith(".osm.pbf")]
-    print("\n".join(osmFiles))
     cmd = wrappers.MkgmapWrapper(jarPath=MKGMAP_JAR)
     cmd.verbose()
-    outputDir = os.path.join(DIST, MKGMAP_DIR)
-    if not os.path.exists(outputDir):
-        os.mkdir(outputDir)
-    cmd.outputDir(outputDir)
+    cmd.outputDir(MKGMAP_OUT_DIR)
+    cmd.index()
+    cmd.gmapsupp()
     cmd.familyId(42)
     cmd.familyName("Stac Map")
     cmd.seriesName("Stac Series")
@@ -122,10 +123,26 @@ def createMapsFromTiles():
 
 
 def createFinalMap():
-    # When creating the final map, add the index option
-    cmd = "java -Xmx2048M -ea -jar %s --gmapsupp -c options.arg *.img" \
-          % (MKGMAP_JAR)
-    os.system(cmd)
+    # TODO When creating the final map, add the index option
+    imgFiles = [os.path.join(MKGMAP_OUT_DIR, f)
+                for f in os.listdir(MKGMAP_OUT_DIR)
+                if f.endswith(".img")]
+    cmd = wrappers.MkgmapWrapper(jarPath=MKGMAP_JAR)
+    cmd.verbose()
+    cmd.gmapsupp()
+    cmd.outputDir(MKGMAP_OUT_DIR)
+    cmd.familyId(42)
+    cmd.familyName("Stac Map")
+    cmd.seriesName("Stac Series")
+    cmd.styleFile("external-styles/")
+    cmd.style("edge")
+    cmd.removeShortArcs()
+    cmd.generateSea(["floodblocker"])
+    cmd.inputFile("M000002a.TYP")
+    for f in imgFiles:
+        cmd.inputFile(f)
+    print(str(cmd))
+    os.system(str(cmd))
 
 
 def splitMaps(l):
