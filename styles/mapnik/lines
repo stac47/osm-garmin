@@ -1,0 +1,105 @@
+# -------------------------------------------------------------------
+# This is the mkgmap style file for converting OSM ways
+# into Garmin lines.
+# Any line prefaced with # is a comment and will not be applied.
+# Each line is a rule, of the generalised format:
+#  OSM_tag(s)_to_match  [Garmin_type_code resolution]
+# See http://wiki.openstreetmap.org/wiki/Mkgmap/help/style_rules
+# and http://wiki.openstreetmap.org/wiki/Mkgmap/help/Custom_styles
+# for more information.
+
+
+# /!\ No routing /!\
+
+
+aeroway=runway [0x27 resolution 20]
+aeroway=taxiway [0x2d resolution 20]
+
+# Set highway names to include the reference if there is one
+highway=motorway {name '${ref|highway-symbol:hbox} ${name}' | '${ref|highway-symbol:hbox}' | '${name}' }
+highway=trunk {name '${ref|highway-symbol:hbox} ${name}' | '${ref|highway-symbol:hbox}' | '${name}' }
+highway=primary {name '${ref|highway-symbol:box} ${name}' | '${ref|highway-symbol:box}' | '${name}' }
+highway=secondary {name '${ref|highway-symbol:oval} ${name}' | '${ref|highway-symbol:oval}' | '${name}' }
+highway=* {name '${ref} ${name}' | '${ref}' | '${name}' }
+
+# Convert generic path to most specific
+highway=path & bicycle=designated {set highway=cycleway }
+highway=bridleway {set highway=path }
+highway=path & foot=designated {set highway=footway }
+
+# Convert links to generic ways
+highway=motorway_link {set highway=motorway}
+highway=trunk_link {set highway=trunk}
+highway=primary_link {set highway=primary}
+highway=secondary_link {set highway=secondary}
+
+# Set similar ways
+(highway=minor | highway=residential) {set highway=unclassified}
+highway=proposed {set highway=construction}
+(railway=abandoned | railway=construction) {set railway=disused}
+(railway=funicular | railway=light_rail) {set railway=narrow_gauge}
+
+# Roundabouts
+junction=roundabout & highway=trunk [0x02 resolution 18]
+junction=roundabout & highway=primary [0x03 resolution 19]
+junction=roundabout & highway=secondary [0x04 resolution 20]
+junction=roundabout & highway=tertiary [0x05 resolution 21]
+junction=roundabout [0x06 resolution 21]
+
+highway=raceway [0x17 resolution 16]
+highway=motorway [0x01 resolution 14]
+highway=trunk [0x02 resolution 16]
+highway=* & motorroad=yes [0x02 resolution 16]
+highway=primary [0x03 resolution 19]
+highway=secondary [0x04 resolution 20]
+highway=tertiary [0x05 resolution 20]
+highway=unclassified [0x06 resolution 21]
+highway=pedestrian [0x0d resolution 22]
+highway=living_street [0x36 resolution 22]
+highway=residential [0x06 resolution 22]
+highway=service [0x07 resolution 22]
+highway=cycleway [0x10 resolution 23]
+highway=footway [0x16 resolution 23]
+highway=path [0x0e resolution 23]
+highway=steps [0x13 resolution 23]
+highway=track [0x0f resolution 21]
+highway=unsurfaced [0x0a resolution 21]
+highway=road [0x00 resolution 21]
+
+highway=construction [0x2c resolution 21]
+
+power=line [0x29 resolution 20]
+
+railway=narrow_gauge [0x30 resolution 17]
+railway=rail [0x14 resolution 12]
+railway=disused [0x31 resolution 17]
+railway=subway [0x2f resolution 18]
+railway=tram [0x32 resolution 18]
+
+aerialway=cable_car | aerialway=gondola [0x11 resolution 21]
+aerialway=chair_lift | aerialway=drag_lift [0x12 resolution 21]
+
+route=ferry {add mkgmap:ferry=1} [0x1a resolution 18]
+
+waterway=canal [0x26 resolution 21]
+waterway=drain | waterway=stream [0x18 resolution 22]
+waterway=river [0x1f resolution 18]
+man_made=pier [0x33 resolution 21]
+
+# The following boundary styles are after the highway rules because ways
+# are frequently tagged with both and we want the highway to take priority.
+boundary=administrative
+{ name
+  '${left:country}/${right:country}' |
+  '${left:state}/${right:state}' |
+  '${left:district}/${right:district}' |
+  '${left:county}/${right:county}' |
+  '${left:municipality}/${right:municipality}' |
+  '${left:city}/${right:city}' |
+  '${left:village}/${right:village}' |
+  '${left:suburban}/${right:suburban}'
+}
+boundary=administrative & admin_level=2 [0x1e resolution 18]
+boundary=administrative & admin_level=6 [0x1d resolution 20]
+boundary=administrative [0x1c resolution 21]
+boundary=national [0x1e resolution 17]

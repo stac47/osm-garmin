@@ -17,8 +17,9 @@ import os.path
 import wrappers
 
 # Reflects the structure of the project
-LIB = "lib"
-DIST = "dist"
+LIB_DIR = "lib"
+DIST_DIR = "dist"
+STYLES_DIR = "styles"
 
 # Geofabrik URLs
 GEOFABRIK_BASE_URL = "http://download.geofabrik.de/"
@@ -26,7 +27,7 @@ GEOFABRIK_EUROPE_URL = GEOFABRIK_BASE_URL + "europe/"
 GEOFABRIK_FRANCE_URL = GEOFABRIK_EUROPE_URL + "france/"
 
 # Local directory where to store files from Geofabrik
-GEOFABRIK_LOCAL_DIR = os.path.join(DIST, "geofabrik")
+GEOFABRIK_LOCAL_DIR = os.path.join(DIST_DIR, "geofabrik")
 
 # From geofabrik we will take only the *.osm.bz2 files (not pbf nor shp files)
 EXTENSION = "-latest.osm.bz2"
@@ -65,17 +66,17 @@ SPLITTER_DIR = "splitter"
 MKGMAP_DIR = "mkgmap"
 
 # Path to Splitter JAR (tiles creator)
-SPLITTER_JAR = os.path.join(LIB, SPLITTER_DIR, "splitter.jar")
-SPLITTER_OUT_DIR = os.path.join(DIST, SPLITTER_DIR)
+SPLITTER_JAR = os.path.join(LIB_DIR, SPLITTER_DIR, "splitter.jar")
+SPLITTER_OUT_DIR = os.path.join(DIST_DIR, SPLITTER_DIR)
 
 # Path to mkgmap Jar (map creator)
-MKGMAP_JAR = os.path.join(LIB, MKGMAP_DIR, "mkgmap.jar")
-MKGMAP_OUT_DIR = os.path.join(DIST, MKGMAP_DIR)
+MKGMAP_JAR = os.path.join(LIB_DIR, MKGMAP_DIR, "mkgmap.jar")
+MKGMAP_OUT_DIR = os.path.join(DIST_DIR, MKGMAP_DIR)
 
 
 def createDistDir():
-    if not os.path.exists(DIST):
-        os.mkdir(DIST)
+    if not os.path.exists(DIST_DIR):
+        os.mkdir(DIST_DIR)
     if not os.path.exists(GEOFABRIK_LOCAL_DIR):
         os.mkdir(GEOFABRIK_LOCAL_DIR)
     if not os.path.exists(SPLITTER_OUT_DIR):
@@ -111,36 +112,13 @@ def createMapsFromTiles():
     cmd.familyId(42)
     cmd.familyName("Stac Map")
     cmd.seriesName("Stac Series")
-    cmd.styleFile("external-styles/")
-    cmd.style("mapnik")
+    cmd.styleFile(STYLES_DIR)
+    cmd.style("edge-605-705")
     cmd.removeShortArcs()
     cmd.generateSea(["floodblocker"])
     for f in osmFiles:
         cmd.inputFile(f)
-    cmd.inputFile("mapnik.TYP")
-    print(str(cmd))
-    os.system(str(cmd))
-
-
-def createFinalMap():
-    # TODO When creating the final map, add the index option
-    imgFiles = [os.path.join(MKGMAP_OUT_DIR, f)
-                for f in os.listdir(MKGMAP_OUT_DIR)
-                if f.endswith(".img")]
-    cmd = wrappers.MkgmapWrapper(jarPath=MKGMAP_JAR)
-    cmd.verbose()
-    cmd.gmapsupp()
-    cmd.outputDir(MKGMAP_OUT_DIR)
-    cmd.familyId(42)
-    cmd.productId(1)
-    cmd.familyName("Stac Map")
-    cmd.seriesName("Stac Series")
-    cmd.styleFile("external-styles/")
-    cmd.style("edge")
-    cmd.removeShortArcs()
-    cmd.generateSea(["floodblocker"])
-    for f in imgFiles:
-        cmd.inputFile(f)
+    cmd.inputFile(os.path.join(STYLES_DIR, "edge-605-705", "typ.txt"))
     print(str(cmd))
     os.system(str(cmd))
 
@@ -161,7 +139,6 @@ def fullProcess(l=DEFAULT_OSM_FILES):
     createDistDir()
     download(DEFAULT_OSM_FILES[0:1])
     createMapsFromTiles()
-    createFinalMap()
 
 
 if __name__ == "__main__":
@@ -170,4 +147,3 @@ if __name__ == "__main__":
     #splitMaps(DEFAULT_OSM_FILES[0:1])
     #fullProcess()
     createMapsFromTiles()
-    #createFinalMap()
