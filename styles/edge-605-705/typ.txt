@@ -1,7 +1,4 @@
-; mapnik.TYP
-; Longueur: 19286 octets
-; Fichier TYP compil?     15/10/2010     14:09:19
-; D?compil? le 16/05/2013 ? 10:13:53
+
 
 [_id]
 ProductCode=0
@@ -89,6 +86,7 @@ String1=0x01,R?sidentiel
 String2=0x00,Residential
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #DDDDDD"
 [end]
@@ -100,6 +98,7 @@ String1=0x01,Militaire
 String2=0x00,Military
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #FFA8A8"
 [end]
@@ -110,6 +109,7 @@ Type=0x05
 String1=0x00,Parking
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #EEEED1"
 [end]
@@ -121,6 +121,7 @@ String1=0x01,Vente
 String2=0x00,Retail
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #F1DADA"
 [end]
@@ -131,6 +132,7 @@ Type=0x09
 String1=0x00,Marina
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B5D0D0"
 [end]
@@ -142,6 +144,7 @@ String1=0x01,?cole
 String2=0x00,School
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #F0F0D8"
 [end]
@@ -153,6 +156,7 @@ String1=0x01,H?pital
 String2=0x00,Hospital
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #F0F0D8"
 [end]
@@ -164,6 +168,7 @@ String1=0x01,Industriel
 String2=0x00,Industrial
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #DFD1D6"
 [end]
@@ -175,6 +180,7 @@ String1=0x01,R?serve naturelle
 String2=0x00,Nature reserve
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #93BC7C"
 "# c #ABDF96"
@@ -220,6 +226,7 @@ String1=0x01,Aire de Jeux
 String2=0x00,Playground
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #CCFFF1"
 [end]
@@ -230,6 +237,7 @@ Type=0x10
 String1=0x00,Camping
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #CCFF99"
 [end]
@@ -240,6 +248,7 @@ Type=0x11
 String1=0x00,Attraction
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #F2CAEA"
 [end]
@@ -251,6 +260,7 @@ String1=0x01,Carri?re
 String2=0x00,Quarry
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #DBD8D8"
 "# c #C5C3C3"
@@ -296,6 +306,7 @@ String1=0x01,B?timent
 String2=0x00,Building
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #BCA9A9"
 [end]
@@ -307,6 +318,7 @@ String1=0x01,For?t
 String2=0x00,Forest
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #3BB551"
 "# c #8DC56C"
@@ -352,6 +364,7 @@ String1=0x01,Prairie
 String2=0x00,Meadow
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #CFECA8"
 [end]
@@ -363,6 +376,7 @@ String1=0x01,Parcours de Golf
 String2=0x00,Golf course
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B5E3B5"
 [end]
@@ -374,6 +388,7 @@ String1=0x01,Terrain de Sport
 String2=0x00,Sports pitch
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #8AD3AF"
 [end]
@@ -385,6 +400,7 @@ String1=0x01,Cimeti?re
 String2=0x00,Graveyard
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #75AC7D"
 "# c #AACBAF"
@@ -430,6 +446,7 @@ String1=0x01,Vignoble
 String2=0x00,Vineyard
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #88BE7C"
 "# c #B3E2A8"
@@ -475,6 +492,7 @@ String1=0x01,Baraquements
 String2=0x00,Barracks
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #FF8F8F"
 [end]
@@ -486,6 +504,7 @@ String1=0x01,Champs
 String2=0x00,Field
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #666600"
 [end]
@@ -497,6 +516,7 @@ String1=0x01,Parc
 String2=0x00,Park
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B6FDB6"
 [end]
@@ -508,6 +528,7 @@ String1=0x01,Zone dangereuse
 String2=0x00,Danger area
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #F9E4E6"
 "# c #FCD8DB"
@@ -552,6 +573,7 @@ Type=0x22
 String1=0x00,Zoo
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #88D685"
 "# c #A4F3A1"
@@ -597,6 +619,7 @@ String1=0x01,Jardins familiaux
 String2=0x00,Allotments
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #C8B084"
 [end]
@@ -608,6 +631,7 @@ String1=0x01,Cultures
 String2=0x00,Farm
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #EAD8DB"
 [end]
@@ -619,6 +643,7 @@ String1=0x01,Station ?lectrique
 String2=0x00,Power station
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #DDDDDD"
 [end]
@@ -629,6 +654,7 @@ Type=0x26
 String1=0x00,Commercial
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #EFC8C8"
 [end]
@@ -639,6 +665,7 @@ Type=0x27
 String1=0x00,Construction
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #9D9D6C"
 [end]
@@ -650,6 +677,7 @@ String1=0x01,D?charge
 String2=0x00,Landfill
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #CCB29C"
 "# c #BFA793"
@@ -695,6 +723,7 @@ String1=0x01,Friche
 String2=0x00,Heath
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #FFFFC0"
 [end]
@@ -706,6 +735,7 @@ String1=0x01,Parcage
 String2=0x00,Apron
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #E9D1FF"
 [end]
@@ -717,6 +747,7 @@ String1=0x01,A?rodrome
 String2=0x00,Aerodrome
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #CCCCCC"
 [end]
@@ -728,6 +759,7 @@ String1=0x01,Plage
 String2=0x00,Beach
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #999999"
 "# c #FFF1BA"
@@ -773,6 +805,7 @@ String1=0x01,Boue
 String2=0x00,Mud
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #AEA397"
 "# c #E6DCD1"
@@ -818,6 +851,7 @@ String1=0x01,Zone mixte
 String2=0x00,Living street
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #CCCCCC"
 [end]
@@ -829,6 +863,7 @@ String1=0x01,Place
 String2=0x00,Plazza
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #FFFFFF"
 [end]
@@ -840,6 +875,7 @@ String1=0x00,Sea
 String2=0x01,Mer
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B5D0D0"
 [end]
@@ -851,6 +887,7 @@ String1=0x01,Place pi?tonni?re
 String2=0x00,Pedestrian plazza
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #EDEDED"
 [end]
@@ -862,6 +899,7 @@ String1=0x01,Gare
 String2=0x00,Station
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #D4AAAA"
 [end]
@@ -873,6 +911,7 @@ String1=0x01,Supermarch?
 String2=0x00,Supermarket
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #F6CDD2"
 [end]
@@ -884,6 +923,7 @@ String1=0x01,Lieu de Culte
 String2=0x00,Place of worship
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #777777"
 [end]
@@ -895,6 +935,7 @@ String1=0x01,Piste
 String2=0x00,Track
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #74DCBA"
 [end]
@@ -905,6 +946,7 @@ Type=0x38
 String1=0x00,Terminal
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #CC99FF"
 [end]
@@ -916,6 +958,7 @@ String1=0x01,Ponton
 String2=0x00,Pier
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #F2EFE9"
 [end]
@@ -927,6 +970,7 @@ String1=0x01,Terre
 String2=0x00,Land
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #F2EFE9"
 [end]
@@ -938,6 +982,7 @@ String1=0x01,Eau
 String2=0x01,Water
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B5D0D0"
 [end]
@@ -949,6 +994,7 @@ String1=0x01,Eau
 String2=0x00,Water
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B5D0D0"
 [end]
@@ -960,6 +1006,7 @@ String1=0x01,Lit de Rivi?re
 String2=0x00,Riverbank
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B5D0D0"
 [end]
@@ -971,6 +1018,7 @@ String1=0x01,Eau
 String2=0x00,Water
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #B5D0D0"
 [end]
@@ -981,6 +1029,7 @@ Type=0x4d
 String1=0x00,Glacier
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #ABBFBF"
 "# c #DDECEC"
@@ -1026,6 +1075,7 @@ String1=0x01,Vergers
 String2=0x00,Orchard
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #999999"
 "# c #9ED88F"
@@ -1071,6 +1121,7 @@ String1=0x01,Broussailles
 String2=0x00,Scrub
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #82CF82"
 "# c #B5E3B5"
@@ -1116,6 +1167,7 @@ String1=0x01,Bois
 String2=0x00,Wood
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="0 0 1 0"
 "1 c #AED1A0"
 [end]
@@ -1127,6 +1179,7 @@ String1=0x01,Mar?cage
 String2=0x00,Marsh
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 Xpm="32 32 2 1"
 "! c #017FFF"
 "# c #F2EFE9"
@@ -1181,6 +1234,7 @@ String1=0x01,Route non-d?finie
 String2=0x00,Road
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1196,6 +1250,7 @@ String1=0x01,Autoroute
 String2=0x00,Motorway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1211,6 +1266,7 @@ String1=0x01,Voie rapide
 String2=0x00,Trunk
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1226,6 +1282,7 @@ String1=0x01,Route primaire
 String2=0x00,Primary highway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1241,6 +1298,7 @@ String1=0x01,Route secondaire
 String2=0x00,Secondary highway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1256,6 +1314,7 @@ String1=0x01,Route tertiaire
 String2=0x00,Tertiary road
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1271,6 +1330,7 @@ String1=0x01,Route mineure
 String2=0x00,Minor highway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1286,6 +1346,7 @@ String1=0x01,Voie de service
 String2=0x00,Service
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1302,6 +1363,7 @@ String1=0x01,Voie sans rev?tement
 String2=0x00,Unsurfaced
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1317,6 +1379,7 @@ String1=0x01,Voie pi?tonni?re
 String2=0x00,Pedestrian
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1332,6 +1395,7 @@ String1=0x01,Sentier
 String2=0x00,Path
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1347,6 +1411,7 @@ Xpm="32 2 2  1"
 String1=0x01,Piste carrossable
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1363,6 +1428,7 @@ String1=0x01,Piste cyclable
 String2=0x00,Cycleway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1380,6 +1446,7 @@ String1=0x01,T?l?ph?rique
 String2=0x00,Cable car
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1399,6 +1466,7 @@ String1=0x01,Remont?e m?canique
 String2=0x00,Chair lift
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1418,6 +1486,7 @@ String1=0x01,Escaliers
 String2=0x00,Steps
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1435,6 +1504,7 @@ String1=0x01,Voie ferr?e
 String2=0x00,Railway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1451,6 +1521,7 @@ String1=0x01,Piste p?destre
 String2=0x00,Footway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1466,6 +1537,7 @@ String1=0x01,Piste de course
 String2=0x00,Raceway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1479,6 +1551,7 @@ String1=0x01,Ruisseau
 String2=0x00,Stream
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1493,6 +1566,7 @@ Xpm="32 1 2  1"
 String1=0x01,Ferry
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1509,6 +1583,7 @@ String1=0x01,Fronti?re communale
 String2=0x00,Boundary
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1527,6 +1602,7 @@ String1=0x01,Fronti?re d?partementale
 String2=0x00,Boundary
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1540,6 +1616,7 @@ String1=0x01,Fronti?re nationale
 String2=0x00,National boundary
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1553,6 +1630,7 @@ String1=0x01,Rivi?re
 String2=0x00,River
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1565,6 +1643,7 @@ Xpm="0 0 1 0"
 String1=0x00,Canal
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1578,6 +1657,7 @@ String1=0x01,Piste d'envol
 String2=0x00,Runway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1591,6 +1671,7 @@ String1=0x01,Ligne ? haute-tension
 String2=0x00,Power line
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1609,6 +1690,7 @@ String1=0x01,Route en construction
 String2=0x00,Road (construction)
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1622,6 +1704,7 @@ String1=0x01,Piste de circulation
 String2=0x00,Taxiway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1635,6 +1718,7 @@ String1=0x01,M?tro
 String2=0x00,Subway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1648,6 +1732,7 @@ String1=0x01,Voie m?trique
 String2=0x00,Narrow gauge
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1665,6 +1750,7 @@ String1=0x01,Voie ferr?e non-utilis?e
 String2=0x00,Unused railway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1679,6 +1765,7 @@ Xpm="0 0 2 0"
 String1=0x00,Tramway
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1692,6 +1779,7 @@ String1=0x01,Jet?e
 String2=0x00,Pier
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1707,6 +1795,7 @@ String1=0x01,Zone mixte
 String2=0x00,Living street
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 [end]
 
 
@@ -1720,6 +1809,7 @@ String1=0x01,Mini rond-point
 String2=0x00,Mini round
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="9 9 10 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #808080"  alpha=14
@@ -1751,6 +1841,7 @@ String1=0x01,Feu tricolore
 String2=0x00,Traffic light
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0D0D0D"  alpha=0
@@ -1782,6 +1873,7 @@ String1=0x01,Halte
 String2=0x00,Halt
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="6 6 2 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #7981B0"  alpha=0
@@ -1802,6 +1894,7 @@ String1=0x01,Ch?teau d'eau
 String2=0x00,Water tower
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 29 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #000000"  alpha=6
@@ -1863,6 +1956,7 @@ String1=0x01,Phare
 String2=0x00,Lighthouse
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 13 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0092DA"  alpha=0
@@ -1908,6 +2002,7 @@ String1=0x01,Barri?re
 String2=0x00,Gate
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="7 5 2 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0C0D0D"  alpha=0
@@ -1927,6 +2022,7 @@ String1=0x01,Borne
 String2=0x00,Bollard
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="3 3 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #808080"  alpha=0
@@ -1944,6 +2040,7 @@ SubType=0x00
 String1=0x00,Restaurant
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 4 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -1975,6 +2072,7 @@ SubType=0x07
 String1=0x00,Fast Food
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 5 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -2008,6 +2106,7 @@ String1=0x01,H?tel
 String2=0x00,Hotel
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 19 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #0092DA"  alpha=15
@@ -2059,6 +2158,7 @@ String1=0x01,H?tel
 String2=0x00,Hostel
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 28 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #0080FF"  alpha=13
@@ -2119,6 +2219,7 @@ String1=0x01,Chambre d'h?tes
 String2=0x00,Guest house
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 23 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #0093E2"  alpha=5
@@ -2170,6 +2271,7 @@ String1=0x01,Caravaning
 String2=0x00,Caravan park
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="24 24 13 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #008BD1"  alpha=4
@@ -2219,6 +2321,7 @@ String1=0x01,Mus?e
 String2=0x00,Museum
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 4 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -2251,6 +2354,7 @@ String1=0x01,Biblioth?que
 String2=0x00,Library
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 7 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -2290,6 +2394,7 @@ String1=0x01,Lieu de culte
 String2=0x00,Place of worship
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0C0D0D"  alpha=0
@@ -2321,6 +2426,7 @@ String1=0x01,Th??tre
 String2=0x00,Theatre
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 13 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #784B0F"  alpha=14
@@ -2366,6 +2472,7 @@ String1=0x01,Cin?ma
 String2=0x00,Cinema
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="24 24 9 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #804000"  alpha=11
@@ -2410,6 +2517,7 @@ SubType=0x02
 String1=0x01,?picerie
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 10 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #AC39AC"  alpha=10
@@ -2448,6 +2556,7 @@ String1=0x01,Supermarch?
 String2=0x00,Supermarket
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 12 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #AC39AC"  alpha=10
@@ -2488,6 +2597,7 @@ String1=0x01,Pharmacie
 String2=0x00,Pharmacy
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #DA0092"  alpha=0
@@ -2519,6 +2629,7 @@ String1=0x01,Coiffure
 String2=0x00,Hairdresser
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 15 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #AC39AC"  alpha=8
@@ -2562,6 +2673,7 @@ String1=0x01,Bricolage
 String2=0x00,Do It Yourself
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 6 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #AC39AC"  alpha=2
@@ -2596,6 +2708,7 @@ String1=0x01,V?tements
 String2=0x00,Clothes
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 9 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #AC39AC"  alpha=12
@@ -2633,6 +2746,7 @@ String1=0x01,Boulangerie
 String2=0x00,Bakery
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 6 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #AC39AC"  alpha=0
@@ -2667,6 +2781,7 @@ String1=0x01,Distributeur de billets
 String2=0x00,ATM
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 15 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #000000"  alpha=10
@@ -2710,6 +2825,7 @@ String1=0x01,Carburant
 String2=0x00,Fuel
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 8 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0092DA"  alpha=0
@@ -2746,6 +2862,7 @@ String1=0x01,Location de v?los
 String2=0x00,Bicycle rental
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 58 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #0099CC"  alpha=10
@@ -2836,6 +2953,7 @@ String1=0x01,Bureau de Poste
 String2=0x00,Post Office
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 4 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -2868,6 +2986,7 @@ String1=0x01,Banque
 String2=0x00,Bank
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #000000"  alpha=0
@@ -2899,6 +3018,7 @@ String1=0x01,Gare routi?re
 String2=0x00,Bus station
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 6 1"   Colormode=32
 "!	c #0090D8"  alpha=14
 "#	c #0092DA"  alpha=0
@@ -2933,6 +3053,7 @@ String1=0x01,Pyl?ne (t?l?com.)
 String2=0x00,Mast
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 11 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #000000"  alpha=14
@@ -2976,6 +3097,7 @@ String1=0x01,Arr?t de bus
 String2=0x00,Bus stop
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="12 12 8 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0091DC"  alpha=13
@@ -3008,6 +3130,7 @@ String1=0x01,Recyclage
 String2=0x00,Recycling
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 11 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3047,6 +3170,7 @@ String1=0x01,Co-voiturage
 String2=0x00,Car sharing
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 24 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #0092DB"  alpha=12
@@ -3099,6 +3223,7 @@ String1=0x01,Gare
 String2=0x00,Station
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="8 8 2 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #7981B0"  alpha=0
@@ -3121,6 +3246,7 @@ String1=0x01,Ancienne gare
 String2=0x00,Disused station
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="8 8 2 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #A2A1A0"  alpha=0
@@ -3142,6 +3268,7 @@ SubType=0x01
 String1=0x00,Police
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 14 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #804000"  alpha=11
@@ -3184,6 +3311,7 @@ String1=0x01,Ambassade
 String2=0x00,Embassy
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="12 12 6 1"   Colormode=32
 "!	c #0092DA"  alpha=0
 "#	c #000000"  alpha=15
@@ -3214,6 +3342,7 @@ String1=0x01,Caserne de Pompiers
 String2=0x00,Fire station
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 14 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #705010"  alpha=15
@@ -3256,6 +3385,7 @@ String1=0x01,Lieu de culte (chr?tien)
 String2=0x00,Place of worship (christian)
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="14 14 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #000000"  alpha=0
@@ -3285,6 +3415,7 @@ String1=0x01,Lieu de culte (musulman)
 String2=0x00,Place of worship (islamic)
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 10 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #000000"  alpha=0
@@ -3323,6 +3454,7 @@ String1=0x01,Lieu de culte (sikh)
 String2=0x00,Place of worship (sikh)
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 4 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0C0D0D"  alpha=0
@@ -3355,6 +3487,7 @@ String1=0x01,Lieu de culte (juif)
 String2=0x00,Place of worship (jewish)
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 5 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #000000"  alpha=0
@@ -3387,6 +3520,7 @@ SubType=0x0d
 String1=0x00,Prison
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 6 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3424,6 +3558,7 @@ SubType=0x00
 String1=0x00,Bar
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 4 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3460,6 +3595,7 @@ String1=0x01,Caf?
 String2=0x00,Cafe
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 9 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3496,6 +3632,7 @@ SubType=0x02
 String1=0x00,Pub
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3526,6 +3663,7 @@ SubType=0x00
 String1=0x00,Camping
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 16 1"   Colormode=32
 "!	c #0090D8"  alpha=6
 "#	c #0092DA"  alpha=0
@@ -3570,6 +3708,7 @@ String1=0x01,Abri
 String2=0x01,Shelter
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 42 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #0092DA"  alpha=0
@@ -3640,6 +3779,7 @@ String1=0x01,Chalet
 String2=0x00,Alpine hut
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 19 2"   Colormode=32
 "!!	c #000000"  alpha=15
 "!#	c #0092DA"  alpha=0
@@ -3687,6 +3827,7 @@ String1=0x01,H?pital
 String2=0x00,Hospital
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #DA0092"  alpha=0
@@ -3717,6 +3858,7 @@ SubType=0x00
 String1=0x00,Parking
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 10 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0092DA"  alpha=0
@@ -3755,6 +3897,7 @@ String1=0x01,Toilettes
 String2=0x00,Toilets
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 16 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3803,6 +3946,7 @@ String1=0x01,Fontaine
 String2=0x00,Drinking water
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="20 20 7 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3842,6 +3986,7 @@ String1=0x01,T?l?phone
 String2=0x00,Telephone
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 7 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3877,6 +4022,7 @@ String1=0x01,Point de vue
 String2=0x00,View point
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 13 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #734A08"  alpha=0
@@ -3918,6 +4064,7 @@ String1=0x01,A?roport
 String2=0x00,Airport
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 9 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0092DA"  alpha=0
@@ -3955,6 +4102,7 @@ String1=0x01,A?rodrome
 String2=0x00,Aerodrome
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 3 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0092DA"  alpha=0
@@ -3980,12 +4128,44 @@ DayXpm="16 16 3 1"   Colormode=32
 
 
 [_point]
+Type=0x063
+SubType=0x00
+String1=0x01,Col
+String2=0x00,Mountain pass
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+DayXpm="16 16 2 1"   Colormode=16
+"!	c #000000"
+"  	c none"
+"                "
+"                "
+"       !!!      "
+"       !!!!     "
+"        !!!     "
+"       !!!      "
+"      !!!    !! "
+"     !!!    !!!!"
+" !! !!!    !!!!!"
+" !!!!!    !!! !!"
+" !!!!    !!!    "
+"  !!    !!!     "
+"       !!!      "
+"      !!!       "
+"      !!!!      "
+"       !!       "
+;1234567890123456
+[end]
+
+
+[_point]
 Type=0x064
 SubType=0x06
 String1=0x01,Passage ? niveau
 String2=0x00,Level crossing
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="7 7 3 1"   Colormode=32
 "!	c #797774"  alpha=0
 "#	c #FDFAFA"  alpha=0
@@ -4008,6 +4188,7 @@ String1=0x01,Bo?te aux lettres
 String2=0x00,Post box
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 16 6 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #804000"  alpha=11
@@ -4042,6 +4223,7 @@ String1=0x01,Pyl?ne (?lectr.)
 String2=0x00,Power tower
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="7 7 2 1"   Colormode=32
 "!	c #878686"  alpha=0
 "#	c #FAF7F7"  alpha=0
@@ -4063,6 +4245,7 @@ String1=0x01,Moulin ? vent
 String2=0x00,Windmill
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="10 15 3 1"   Colormode=32
 "!	c #000000"  alpha=0
 "#	c #000000"  alpha=15
@@ -4093,6 +4276,7 @@ String1=0x01,?olienne
 String2=0x00,Power wind
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="16 26 9 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #0C0D0D"  alpha=0
@@ -4140,6 +4324,7 @@ String1=0x01,Source
 String2=0x00,Spring
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="5 7 2 1"   Colormode=32
 "!	c #FFFFFF"  alpha=0
 "#	c #588499"  alpha=0
@@ -4161,6 +4346,7 @@ String1=0x01,Sommet
 String2=0x00,Peak
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="8 8 2 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #D08F55"  alpha=0
@@ -4183,6 +4369,7 @@ String1=0x01,Arbre
 String2=0x00,Tree
 ExtendedLabels=Y
 FontStyle=SmallFont
+CustomColor=No
 DayXpm="3 3 2 1"   Colormode=32
 "!	c #000000"  alpha=15
 "#	c #239C45"  alpha=0
