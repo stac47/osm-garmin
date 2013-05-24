@@ -1241,7 +1241,7 @@ CustomColor=No
 [_line]
 Type=0x01
 UseOrientation=Y
-LineWidth=6
+LineWidth=5
 BorderWidth=1
 Xpm="0 0 2 0"
 "1 c #809BC0"
@@ -1257,7 +1257,7 @@ CustomColor=No
 [_line]
 Type=0x02
 UseOrientation=Y
-LineWidth=7
+LineWidth=5
 BorderWidth=1
 Xpm="0 0 2 0"
 "1 c #A9DBA9"
@@ -1273,7 +1273,7 @@ CustomColor=No
 [_line]
 Type=0x03
 UseOrientation=Y
-LineWidth=7
+LineWidth=4
 BorderWidth=1
 Xpm="0 0 2 0"
 "1 c #EC989A"
@@ -1289,7 +1289,7 @@ CustomColor=No
 [_line]
 Type=0x04
 UseOrientation=Y
-LineWidth=7
+LineWidth=4
 BorderWidth=1
 Xpm="0 0 2 0"
 "1 c #FED7A5"
@@ -1305,7 +1305,7 @@ CustomColor=No
 [_line]
 Type=0x05
 UseOrientation=Y
-LineWidth=7
+LineWidth=4
 BorderWidth=1
 Xpm="0 0 2 0"
 "1 c #FFFFB3"
