@@ -47,4 +47,4 @@ Usage
 
 This is not a definitive usage guide:
 
-<toto@debian$ python3 scripts/pymapcreator.py>
+    stac@amadebian:~/osm-garmin$ python3 scripts/pymapcreator.py
