@@ -15,6 +15,25 @@ This script aims at creating map for garmin edge.
 import os
 import os.path
 import wrappers
+from httputils import Downloader
+import logging
+
+#TODO extract logger config from here.
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+# create console handler and set level to debug
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+
+# create formatter
+f = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+formatter = logging.Formatter(f)
+
+# add formatter to ch
+ch.setFormatter(formatter)
+
+# add ch to logger
+logger.addHandler(ch)
 
 # Reflects the structure of the project
 LIB_DIR = "lib"
@@ -22,9 +41,9 @@ DIST_DIR = "dist"
 STYLES_DIR = "styles"
 
 # Geofabrik URLs
-GEOFABRIK_BASE_URL = "http://download.geofabrik.de/"
-GEOFABRIK_EUROPE_URL = GEOFABRIK_BASE_URL + "europe/"
-GEOFABRIK_FRANCE_URL = GEOFABRIK_EUROPE_URL + "france/"
+GEOFABRIK_BASE_URL = "http://download.geofabrik.de"
+GEOFABRIK_EUROPE_URL = "/europe"
+GEOFABRIK_FRANCE_URL = "/france"
 
 # Local directory where to store files from Geofabrik
 GEOFABRIK_LOCAL_DIR = os.path.join(DIST_DIR, "geofabrik")
@@ -86,16 +105,18 @@ def createDistDir():
 
 
 def download(l=DEFAULT_OSM_FILES):
-    cmd = "wget %s -O %s"
+    downloader = Downloader(GEOFABRIK_BASE_URL, 80)
     for filename in l:
-        src = GEOFABRIK_FRANCE_URL + filename + EXTENSION
+        src = GEOFABRIK_EUROPE_URL + GEOFABRIK_FRANCE_URL + "/" +\
+            filename + EXTENSION
         dst = os.path.join(GEOFABRIK_LOCAL_DIR, filename + EXTENSION)
-        os.system(cmd % (src, dst))
+        downloader.addItem(src, dst)
+    downloader.start()
 
 
 def splitMap(filename, mapid=63240001):
     filepath = os.path.join(GEOFABRIK_LOCAL_DIR, filename + EXTENSION)
-    cmd = "java -Xmx2048M -jar %s --mapid=%s --output-dir=%s %s"
+    cmd = "java -Xmx2048M -jar %s --mapid=%s --output-dir=%s %s>/dev/null"
     os.system(cmd % (SPLITTER_JAR, str(mapid),
                      SPLITTER_OUT_DIR, filepath))
 
@@ -119,14 +140,16 @@ def createMapsFromTiles():
     for f in osmFiles:
         cmd.inputFile(f)
     cmd.inputFile(os.path.join(STYLES_DIR, "edge-605-705", "typ.txt"))
-    print(str(cmd))
-    os.system(str(cmd))
+    if logger.isEnabledFor(logging.DEBUG):
+        logger.debug((str(cmd)))
+    os.system(str(cmd) + ">/dev/null")
 
 
 def splitMaps(l):
     mapidBase = 63240001
     for f in l:
-        print(("%s -> %s" % (f, mapidBase)))
+        if logger.isEnabledFor(logging.DEBUG):
+            logger.debug(("%s -> %s" % (f, mapidBase)))
         splitMap(f, mapidBase)
         mapidBase += 100
 
@@ -142,8 +165,8 @@ def fullProcess(l=DEFAULT_OSM_FILES):
 
 
 if __name__ == "__main__":
-    #createDistDir()
-    #download(DEFAULT_OSM_FILES[0:1])
-    #splitMaps(DEFAULT_OSM_FILES[0:1])
+    createDistDir()
+    download(DEFAULT_OSM_FILES[0:1])
+    splitMaps(DEFAULT_OSM_FILES[0:1])
     #fullProcess()
     createMapsFromTiles()

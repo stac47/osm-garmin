@@ -40,7 +40,6 @@ The project depends upon:
 
 + Python 3.2
 + Java 7
-+ wget (This dependency will be removed in the future)
 
 Usage
 -----
