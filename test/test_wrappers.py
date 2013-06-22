@@ -8,7 +8,7 @@ Created on 2013-05-14
 """
 
 import unittest
-import wrappers
+import scripts.wrappers as wrappers
 
 
 class TestCommandWrapper(unittest.TestCase):

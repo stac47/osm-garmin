@@ -1,0 +1,9 @@
+<map>
+    <title>Map Test</title>
+    <version>1.0</version>
+    <author>stac</author>
+    <fragments>
+        <fragment src="http://download.geofabrik.de/europe/france/provence-alpes-cote-d-azur-latest.osm.bz2"/>
+        <fragment src="http://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.bz2"/>
+    </fragments>
+</map>

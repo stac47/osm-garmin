@@ -14,8 +14,9 @@ This script aims at creating map for garmin edge.
 
 import os
 import os.path
-import wrappers
-from httputils import Downloader
+import scripts.wrappers as wrappers
+from scripts.httputils import Downloader
+import scripts.mapdescriptor
 import logging
 
 #TODO extract logger config from here.
@@ -42,131 +43,108 @@ STYLES_DIR = "styles"
 
 # Geofabrik URLs
 GEOFABRIK_BASE_URL = "http://download.geofabrik.de"
-GEOFABRIK_EUROPE_URL = "/europe"
-GEOFABRIK_FRANCE_URL = "/france"
 
-# Local directory where to store files from Geofabrik
-GEOFABRIK_LOCAL_DIR = os.path.join(DIST_DIR, "geofabrik")
-
-# From geofabrik we will take only the *.osm.bz2 files (not pbf nor shp files)
-EXTENSION = "-latest.osm.bz2"
-
-# Region of France
-ALSACE = "alsace"
-AQUITAINE = "aquitaine"
-AUVERGNE = "auvergne"
-BASSE_NORMANDIE = "basse-normandie"
-BOURGOGNE = "bourgogne"
-BRETAGNE = "bretagne"
-CENTRE = "centre"
-CHAMPAGNE_ARDENNE = "champagne-ardenne"
-CORSE = "corse"
-FRANCHE_COMTE = "franche-comte"
-HAUTE_NORMANDIE = "haute-normandie"
-ILE_DE_FRANCE = "ile-de-france"
-LANGUEDOC_ROUSSILLON = "languedoc-roussillon"
-LIMOUSIN = "limousin"
-LORRAINE = "lorraine"
-MIDI_PYRENEES = "midi-pyrenees"
-NORD_PAS_DE_CALAIS = "nord-pas-de-calais"
-PAYS_DE_LA_LOIRE = "pays-de-la-loire"
-PICARDIE = "picardie"
-POITOU_CHARENTES = "poitou-charentes"
-PROVENCE_ALPES_COTE_D_AZUR = "provence-alpes-cote-d-azur"
-RHONE_ALPES = "rhone-alpes"
-
-# By default, we'll take of files from France
-DEFAULT_OSM_FILES = [PROVENCE_ALPES_COTE_D_AZUR, RHONE_ALPES,
-                     LANGUEDOC_ROUSSILLON, MIDI_PYRENEES, AQUITAINE,
-                     AUVERGNE, CORSE]
-
+# Name of splitter directory (used for lib and output)
 SPLITTER_DIR = "splitter"
 
+# Name of mkgmap directory (used for lib and output)
 MKGMAP_DIR = "mkgmap"
 
 # Path to Splitter JAR (tiles creator)
 SPLITTER_JAR = os.path.join(LIB_DIR, SPLITTER_DIR, "splitter.jar")
-SPLITTER_OUT_DIR = os.path.join(DIST_DIR, SPLITTER_DIR)
 
 # Path to mkgmap Jar (map creator)
 MKGMAP_JAR = os.path.join(LIB_DIR, MKGMAP_DIR, "mkgmap.jar")
+
+# Output directories
+SPLITTER_OUT_DIR = os.path.join(DIST_DIR, SPLITTER_DIR)
 MKGMAP_OUT_DIR = os.path.join(DIST_DIR, MKGMAP_DIR)
 
-
-def createDistDir():
-    if not os.path.exists(DIST_DIR):
-        os.mkdir(DIST_DIR)
-    if not os.path.exists(GEOFABRIK_LOCAL_DIR):
-        os.mkdir(GEOFABRIK_LOCAL_DIR)
-    if not os.path.exists(SPLITTER_OUT_DIR):
-        os.mkdir(SPLITTER_OUT_DIR)
-    if not os.path.exists(MKGMAP_OUT_DIR):
-        os.mkdir(MKGMAP_OUT_DIR)
+# Local directory where to store files from Geofabrik
+GEOFABRIK_LOCAL_DIR = os.path.join(DIST_DIR, "geofabrik")
 
 
-def download(l=DEFAULT_OSM_FILES):
+class MapCreator(object):
+
+    # The default downloader with the default server url
     downloader = Downloader(GEOFABRIK_BASE_URL, 80)
-    for filename in l:
-        src = GEOFABRIK_EUROPE_URL + GEOFABRIK_FRANCE_URL + "/" +\
-            filename + EXTENSION
-        dst = os.path.join(GEOFABRIK_LOCAL_DIR, filename + EXTENSION)
-        downloader.addItem(src, dst)
-    downloader.start()
 
+    # Filepath of downloaded osm files
+    downloadedFileName = []
 
-def splitMap(filename, mapid=63240001):
-    filepath = os.path.join(GEOFABRIK_LOCAL_DIR, filename + EXTENSION)
-    cmd = "java -Xmx2048M -jar %s --mapid=%s --output-dir=%s %s>/dev/null"
-    os.system(cmd % (SPLITTER_JAR, str(mapid),
-                     SPLITTER_OUT_DIR, filepath))
+    # Take the standard mapid for splitter
+    lastMapid = 63240001
 
+    def __init__(self, mapXml="map.xml"):
+        super().__init__()
+        # Load the MapDescriptor from the map.xml
+        self.mapDescriptor = scripts.mapdescriptor.readMapXml()
 
-def createMapsFromTiles():
-    osmFiles = [os.path.join(SPLITTER_OUT_DIR, f)
-                for f in os.listdir(SPLITTER_OUT_DIR)
-                if f.endswith(".osm.pbf")]
-    cmd = wrappers.MkgmapWrapper(jarPath=MKGMAP_JAR)
-    cmd.verbose()
-    cmd.outputDir(MKGMAP_OUT_DIR)
-    cmd.index()
-    cmd.gmapsupp()
-    cmd.familyId(42)
-    cmd.familyName("Stac Map")
-    cmd.seriesName("Stac Series")
-    cmd.styleFile(STYLES_DIR)
-    cmd.style("edge-605-705")
-    cmd.removeShortArcs()
-    cmd.generateSea(["floodblocker"])
-    for f in osmFiles:
-        cmd.inputFile(f)
-    cmd.inputFile(os.path.join(STYLES_DIR, "edge-605-705", "typ.txt"))
-    if logger.isEnabledFor(logging.DEBUG):
-        logger.debug((str(cmd)))
-    os.system(str(cmd) + ">/dev/null")
+    def createDistDir(self):
+        if not os.path.exists(DIST_DIR):
+            os.mkdir(DIST_DIR)
+        if not os.path.exists(GEOFABRIK_LOCAL_DIR):
+            os.mkdir(GEOFABRIK_LOCAL_DIR)
+        if not os.path.exists(SPLITTER_OUT_DIR):
+            os.mkdir(SPLITTER_OUT_DIR)
+        if not os.path.exists(MKGMAP_OUT_DIR):
+            os.mkdir(MKGMAP_OUT_DIR)
 
+    def download(self):
+        md = self.mapdescriptor
+        if len(md.fragments) == 0:
+            raise Exception("No Fragment to download")
 
-def splitMaps(l):
-    mapidBase = 63240001
-    for f in l:
+        for fragment in md.fragments:
+            filename = fragment.split("/")[-1]
+            dst = os.path.join(GEOFABRIK_LOCAL_DIR, filename)
+            self.downloadedFileName.append(dst)
+            self.downloader.addItem(fragment, dst)
+        self.downloader.start()
+
+    def __splitMap(self, filename):
+        cmd = "java -Xmx2048M -jar %s --mapid=%s --output-dir=%s %s>/dev/null"
+        os.system(cmd % (SPLITTER_JAR, str(self.lastMapid),
+                         SPLITTER_OUT_DIR, filename))
+
+    def __searchDownloadedFiles(self):
+        self.downloadedFileName = \
+            [os.path.join(GEOFABRIK_LOCAL_DIR, f)
+             for f in os.listdir(GEOFABRIK_LOCAL_DIR)
+             if f.endswith("osm.bz2")]
+
+    def splitMaps(self):
+        if len(self.downloadedFileName) == 0:
+            self.__searchDownloadedFiles()
+        for f in self.downloadedFileName:
+            if logger.isEnabledFor(logging.DEBUG):
+                logger.debug(("%s -> %s" % (f, self.lastMapid)))
+            self.__splitMap(f)
+            self.lastMapid += 100
+
+    def createMapsFromTiles(self):
+        osmFiles = [os.path.join(SPLITTER_OUT_DIR, f)
+                    for f in os.listdir(SPLITTER_OUT_DIR)
+                    if f.endswith(".osm.pbf")]
+        cmd = wrappers.MkgmapWrapper(jarPath=MKGMAP_JAR)
+        cmd.verbose()
+        cmd.outputDir(MKGMAP_OUT_DIR)
+        cmd.index()
+        cmd.gmapsupp()
+        cmd.familyId(42)
+        cmd.familyName("Stac Map")
+        cmd.seriesName("Stac Series")
+        cmd.styleFile(STYLES_DIR)
+        cmd.style("edge-605-705")
+        cmd.removeShortArcs()
+        cmd.generateSea(["floodblocker"])
+        for f in osmFiles:
+            cmd.inputFile(f)
+        cmd.inputFile(os.path.join(STYLES_DIR, "edge-605-705", "typ.txt"))
         if logger.isEnabledFor(logging.DEBUG):
-            logger.debug(("%s -> %s" % (f, mapidBase)))
-        splitMap(f, mapidBase)
-        mapidBase += 100
-
-
-def fullProcess(l=DEFAULT_OSM_FILES):
-    """ Generates a map of France to be uploaded onto Garmin device. Output
-    file is 'gmapsupp.img'.
-    """
-
-    createDistDir()
-    download(DEFAULT_OSM_FILES[0:1])
-    createMapsFromTiles()
+            logger.debug((str(cmd)))
+        os.system(str(cmd) + ">/dev/null")
 
 
 if __name__ == "__main__":
-    createDistDir()
-    download(DEFAULT_OSM_FILES[0:1])
-    splitMaps(DEFAULT_OSM_FILES[0:1])
-    #fullProcess()
-    createMapsFromTiles()
+    pass
