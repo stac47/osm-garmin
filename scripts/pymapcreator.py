@@ -91,7 +91,7 @@ class MapCreator(object):
             os.mkdir(MKGMAP_OUT_DIR)
 
     def download(self):
-        md = self.mapdescriptor
+        md = self.mapDescriptor
         if len(md.fragments) == 0:
             raise Exception("No Fragment to download")
 
