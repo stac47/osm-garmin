@@ -2,16 +2,24 @@
 # -*- coding: utf-8 -*-
 
 """
+CLI client application.
+
+TODO:
+    - progress bar (http://www.linuxtrack.com/t1171-barre-de-progression.htm)
+    - parsing arguments
+
 Created on 2013-06-22
 
 @author : Laurent Stacul
 """
 
-import scripts.pymapcreator
+import scripts.logconfig
+scripts.logconfig.configLoggers()
+from scripts.mapcreator import MapCreator
+
 
 if __name__ == "__main__":
-    mp = scripts.pymapcreator.MapCreator()
-    mp.createDistDir()
+    mp = MapCreator()
     mp.download()
     mp.splitMaps()
     mp.createMapsFromTiles()
