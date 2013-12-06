@@ -25,9 +25,6 @@ logger = logging.getLogger(__name__)
 LIB_DIR = "lib"
 STYLES_DIR = "styles"
 
-# Geofabrik URLs
-GEOFABRIK_BASE_URL = "http://download.geofabrik.de"
-
 # Name of splitter directory (used for lib and output)
 SPLITTER_DIR = "splitter"
 
@@ -44,7 +41,7 @@ MKGMAP_JAR = os.path.join(LIB_DIR, MKGMAP_DIR, "mkgmap.jar")
 class MapCreator(object):
 
     # The default downloader with the default server url
-    downloader = Downloader(GEOFABRIK_BASE_URL, 80)
+    downloader = None
 
     # Filepath of downloaded osm files
     downloadedFileName = []
@@ -61,6 +58,9 @@ class MapCreator(object):
         md = self.mapDescriptor
         if len(md.fragments) == 0:
             raise Exception("No Fragment to download")
+
+        if self.downloader is None:
+            self.downloader = Downloader(md.downloadBaseUrl, 80)
 
         for fragment in md.fragments:
             filename = fragment.split("/")[-1]

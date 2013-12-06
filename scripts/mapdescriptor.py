@@ -12,12 +12,16 @@ import xml.etree.ElementTree as ET
 
 DEFAULT_MAP = "map.xml"
 
+# Geofabrik URLs
+GEOFABRIK_BASE_URL = "http://download.geofabrik.de"
+
 
 class MapDescriptor(object):
 
     title = "MyMap"
     author = "Nobody"
     version = "0.1"
+    downloadBaseUrl = GEOFABRIK_BASE_URL
     fragments = []
 
 
@@ -30,6 +34,7 @@ def readMapXml(source=DEFAULT_MAP):
     ret.title = tree.find("title").text
     ret.author = tree.find("author").text
     ret.version = tree.find("version").text
+    ret.downloadBaseUrl = tree.find("base-url").text
 
     # Getting the urls of the source files
     for e in tree.iterfind("fragments/fragment"):
