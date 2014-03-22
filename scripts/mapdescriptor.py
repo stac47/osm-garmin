@@ -21,11 +21,11 @@ class MapDescriptor(object):
     title = "MyMap"
     author = "Nobody"
     version = "0.1"
-    downloadBaseUrl = GEOFABRIK_BASE_URL
+    download_base_url = GEOFABRIK_BASE_URL
     fragments = []
 
 
-def readMapXml(source=DEFAULT_MAP):
+def read_map_xml(source=DEFAULT_MAP):
     ret = MapDescriptor()
     tree = ET.ElementTree()
     tree.parse(source)
@@ -34,7 +34,7 @@ def readMapXml(source=DEFAULT_MAP):
     ret.title = tree.find("title").text
     ret.author = tree.find("author").text
     ret.version = tree.find("version").text
-    ret.downloadBaseUrl = tree.find("base-url").text
+    ret.download_base_url = tree.find("base-url").text
 
     # Getting the urls of the source files
     for e in tree.iterfind("fragments/fragment"):

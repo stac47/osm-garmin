@@ -20,18 +20,18 @@ def configLoggers():
     """ Configures the loggers to log into the distribution folder."""
 
     # First we ensure the dist folder structure is consistant.
-    scripts.disttree.createDistDir()
+    scripts.disttree.create_dist_dir()
 
     logger = logging.getLogger("scripts")
     logger.setLevel(logging.DEBUG)
 
     # This handler will log everything in "dist/log/app.log"
-    fileHandler = logging.FileHandler(APP_LOG_FILE, encoding="utf-8")
-    fileHandler.setLevel(logging.DEBUG)
+    file_handler = logging.FileHandler(APP_LOG_FILE, encoding="utf-8")
+    file_handler.setLevel(logging.DEBUG)
     # Create formatter
-    formatStr = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    formatter = logging.Formatter(formatStr)
+    format_str = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    formatter = logging.Formatter(format_str)
 
-    fileHandler.setFormatter(formatter)
+    file_handler.setFormatter(formatter)
 
-    logger.addHandler(fileHandler)
+    logger.addHandler(file_handler)

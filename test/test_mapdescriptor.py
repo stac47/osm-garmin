@@ -13,8 +13,8 @@ import unittest
 
 class TestMapDescriptor(unittest.TestCase):
 
-    def test_getDescriptor(self):
-        md = scripts.mapdescriptor.readMapXml("test/res/map.xml")
+    def test_get_descriptor(self):
+        md = scripts.mapdescriptor.read_map_xml("test/res/map.xml")
         self.assertEqual("Map Test", md.title)
         self.assertEqual("1.0", md.version)
         self.assertEqual("stac", md.author)

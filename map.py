@@ -21,5 +21,5 @@ from scripts.mapcreator import MapCreator
 if __name__ == "__main__":
     mp = MapCreator()
     mp.download()
-    mp.splitMaps()
-    mp.createMapsFromTiles()
+    mp.split_maps()
+    mp.create_maps_from_tiles()

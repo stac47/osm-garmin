@@ -11,112 +11,112 @@ Created on 2013-05-14
 class CommandWrapper(object):
 
     def __init__(self, command, options=[]):
-        self.commandLine = [command]
-        self.commandLine.extend(options)
+        self.command_line = [command]
+        self.command_line.extend(options)
 
     def __str__(self):
-        return " ".join(self.commandLine)
+        return " ".join(self.command_line)
 
 
 class JavaCommandWrapper(CommandWrapper):
 
     def __init__(self, options=[]):
         super().__init__("java", ["-Xmx1024M"])
-        self.commandLine.extend(options)
+        self.command_line.extend(options)
 
 
 class MkgmapWrapper(JavaCommandWrapper):
 
-    def __init__(self, jarPath):
-        super().__init__(["-jar {}".format(jarPath)])
+    def __init__(self, jar_path):
+        super().__init__(["-jar {}".format(jar_path)])
 
     def verbose(self):
-        self.commandLine.append("--verbose")
+        self.command_line.append("--verbose")
 
-    def inputFile(self, s):
-        self.commandLine.append("--input-file={}".format(s))
+    def input_file(self, s):
+        self.command_line.append("--input-file={}".format(s))
 
     def gmapsupp(self):
-        self.commandLine.append("--gmapsupp")
+        self.command_line.append("--gmapsupp")
 
-    def readConfig(self, s):
-        self.commandLine.append("--read-config={}".format(s))
+    def read_config(self, s):
+        self.command_line.append("--read-config={}".format(s))
 
-    def outputDir(self, s):
-        self.commandLine.append("--output-dir={}".format(s))
+    def output_dir(self, s):
+        self.command_line.append("--output-dir={}".format(s))
 
-    def mapName(self, s):
-        self.commandLine.append("--mapname=\"{}\"".format(s))
+    def map_name(self, s):
+        self.command_line.append("--mapname=\"{}\"".format(s))
 
     def description(self, s):
-        self.commandLine.append("--description=\"{}\"".format(s))
+        self.command_line.append("--description=\"{}\"".format(s))
 
-    def countryName(self, s):
-        self.commandLine.append("--country-name=\"{}\"".format(s))
+    def country_name(self, s):
+        self.command_line.append("--country-name=\"{}\"".format(s))
 
-    def countryAbbr(self, abbreviation):
-        self.commandLine.append("--country-abbr={}".format(abbreviation))
+    def country_abbr(self, abbreviation):
+        self.command_line.append("--country-abbr={}".format(abbreviation))
 
-    def regionName(self, s):
-        self.commandLine.append("--region-name=\"{}\"".format(s))
+    def region_name(self, s):
+        self.command_line.append("--region-name=\"{}\"".format(s))
 
-    def regionAbbr(self, abbreviation):
-        self.commandLine.append("--region-abbr={}".format(abbreviation))
+    def region_abbr(self, abbreviation):
+        self.command_line.append("--region-abbr={}".format(abbreviation))
 
-    def codePage(self, number):
-        self.commandLine.append("--code-page={}".format(number))
+    def code_page(self, number):
+        self.command_line.append("--code-page={}".format(number))
 
     def index(self):
-        self.commandLine.append("--index")
+        self.command_line.append("--index")
 
-    def styleFile(self, s):
-        self.commandLine.append("--style-file={}".format(s))
+    def style_file(self, s):
+        self.command_line.append("--style-file={}".format(s))
 
     def style(self, s):
-        self.commandLine.append("--style={}".format(s))
+        self.command_line.append("--style={}".format(s))
 
-    def checkStyle(self):
-        self.commandLine.append("--check-style")
+    def check_style(self):
+        self.command_line.append("--check-style")
 
-    def familyId(self, s):
-        self.commandLine.append("--family-id={}".format(s))
+    def family_id(self, s):
+        self.command_line.append("--family-id={}".format(s))
 
-    def familyName(self, s):
-        self.commandLine.append("--family-name=\"{}\"".format(s))
+    def family_name(self, s):
+        self.command_line.append("--family-name=\"{}\"".format(s))
 
-    def productId(self, s):
-        self.commandLine.append("--product-id={}".format(s))
+    def product_id(self, s):
+        self.command_line.append("--product-id={}".format(s))
 
-    def productVersion(self, s):
-        self.commandLine.append("--product-version={}".format(s))
+    def product_version(self, s):
+        self.command_line.append("--product-version={}".format(s))
 
-    def seriesName(self, s):
-        self.commandLine.append("--series-name=\"{}\"".format(s))
+    def series_name(self, s):
+        self.command_line.append("--series-name=\"{}\"".format(s))
 
-    def copyrightMessage(self, s):
-        self.commandLine.append("--copyright-message={}".format(s))
+    def copyright_message(self, s):
+        self.command_line.append("--copyright-message={}".format(s))
 
-    def licenseFile(self, s):
-        self.commandLine.append("--license-file={}".format(s))
+    def license_file(self, s):
+        self.command_line.append("--license-file={}".format(s))
 
-    def maxJobs(self, number):
-        self.commandLine.append("--max-jobs={}".format(number))
+    def max_jobs(self, number):
+        self.command_line.append("--max-jobs={}".format(number))
 
     def route(self):
-        self.commandLine.append("--route")
+        self.command_line.append("--route")
 
-    def removeShortArcs(self, minLength=0):
-        self.commandLine.append("--remove-short-arcs={}".format(minLength))
+    def remove_short_arcs(self, min_length=0):
+        self.command_line.append("--remove-short-arcs={}".format(min_length))
 
-    def generateSea(self, valueList):
-        s = ",".join(valueList)
-        self.commandLine.append("--generate-sea={}".format(s))
+    def generate_sea(self, value_list):
+        s = ",".join(value_list)
+        self.command_line.append("--generate-sea={}".format(s))
 
     def tbdfile(self):
-        self.commandLine.append("--tbdfile")
+        self.command_line.append("--tbdfile")
 
     def transparent(self):
-        self.commandLine.append("--transparent")
+        self.command_line.append("--transparent")
 
-    def poiAddress(self):
-        self.commandLine.append("--poi-address")
+    def poi_address(self):
+        self.command_line.append("--poi-address")

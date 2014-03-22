@@ -44,74 +44,74 @@ class MapCreator(object):
     downloader = None
 
     # Filepath of downloaded osm files
-    downloadedFileName = []
+    downloaded_file_name = []
 
     # Take the standard mapid for splitter
-    lastMapid = 63240001
+    last_mapid = 63240001
 
-    def __init__(self, mapXml="map.xml"):
+    def __init__(self, map_xml="map.xml"):
         super().__init__()
         # Load the MapDescriptor from the map.xml
-        self.mapDescriptor = scripts.mapdescriptor.readMapXml()
+        self.map_descriptor = scripts.mapdescriptor.read_map_xml()
 
     def download(self):
-        md = self.mapDescriptor
+        md = self.map_descriptor
         if len(md.fragments) == 0:
             raise Exception("No Fragment to download")
 
         if self.downloader is None:
-            self.downloader = Downloader(md.downloadBaseUrl, 80)
+            self.downloader = Downloader(md.download_base_url, 80)
 
         for fragment in md.fragments:
             filename = fragment.split("/")[-1]
             dst = os.path.join(disttree.GEOFABRIK_LOCAL_DIR, filename)
-            self.downloadedFileName.append(dst)
-            self.downloader.addItem(fragment, dst)
+            self.downloaded_file_name.append(dst)
+            self.downloader.add_item(fragment, dst)
         self.downloader.start()
 
-    def __splitMap(self, filename):
-        cmdTpl = "java -Xmx1024M -jar %s --mapid=%s --output-dir=%s %s"
-        print(cmdTpl)
-        cmd = cmdTpl % (SPLITTER_JAR, str(self.lastMapid),
-                        disttree.SPLITTER_OUT_DIR, filename)
+    def __split_map(self, filename):
+        cmd_tpl = "java -Xmx1024M -jar %s --mapid=%s --output-dir=%s %s"
+        print(cmd_tpl)
+        cmd = cmd_tpl % (SPLITTER_JAR, str(self.last_mapid),
+                         disttree.SPLITTER_OUT_DIR, filename)
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(cmd)
         os.system(cmd)
 
-    def __searchDownloadedFiles(self):
-        self.downloadedFileName = \
+    def __search_downloaded_files(self):
+        self.downloaded_file_name = \
             [os.path.join(disttree.GEOFABRIK_LOCAL_DIR, f)
              for f in os.listdir(disttree.GEOFABRIK_LOCAL_DIR)
              if f.endswith("osm.bz2")]
 
-    def splitMaps(self):
-        if len(self.downloadedFileName) == 0:
-            self.__searchDownloadedFiles()
-        for f in self.downloadedFileName:
+    def split_maps(self):
+        if len(self.downloaded_file_name) == 0:
+            self.__search_downloaded_files()
+        for f in self.downloaded_file_name:
             if logger.isEnabledFor(logging.DEBUG):
-                logger.debug(("%s -> %s" % (f, self.lastMapid)))
-            self.__splitMap(f)
-            self.lastMapid += 100
+                logger.debug(("%s -> %s" % (f, self.last_mapid)))
+            self.__split_map(f)
+            self.last_mapid += 100
 
-    def createMapsFromTiles(self):
-        osmFiles = [os.path.join(disttree.SPLITTER_OUT_DIR, f)
-                    for f in os.listdir(disttree.SPLITTER_OUT_DIR)
-                    if f.endswith(".osm.pbf")]
-        cmd = wrappers.MkgmapWrapper(jarPath=MKGMAP_JAR)
+    def create_maps_from_tiles(self):
+        osm_files = [os.path.join(disttree.SPLITTER_OUT_DIR, f)
+                     for f in os.listdir(disttree.SPLITTER_OUT_DIR)
+                     if f.endswith(".osm.pbf")]
+        cmd = wrappers.MkgmapWrapper(jar_path=MKGMAP_JAR)
         cmd.verbose()
-        cmd.outputDir(disttree.MKGMAP_OUT_DIR)
+        cmd.output_dir(disttree.MKGMAP_OUT_DIR)
         cmd.index()
         cmd.gmapsupp()
-        cmd.familyId(42)
-        cmd.familyName("Stac Map")
-        cmd.seriesName("Stac Series")
-        cmd.styleFile(STYLES_DIR)
+        cmd.family_id(42)
+        cmd.family_name("Stac Map")
+        cmd.series_name("Stac Series")
+        cmd.style_file(STYLES_DIR)
         cmd.style("edge-605-705")
-        cmd.removeShortArcs()
-        cmd.generateSea(["floodblocker"])
-        for f in osmFiles:
-            cmd.inputFile(f)
-        cmd.inputFile(os.path.join(STYLES_DIR, "edge-605-705", "typ.txt"))
+        cmd.remove_short_arcs()
+        cmd.generate_sea(["floodblocker"])
+        for f in osm_files:
+            cmd.input_file(f)
+        cmd.input_file(os.path.join(STYLES_DIR, "edge-605-705", "typ.txt"))
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug((str(cmd)))
         os.system(str(cmd))
