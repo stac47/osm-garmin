@@ -41,7 +41,9 @@ class MapCreator(object):
     def __init__(self, map_xml="map.xml"):
         super().__init__()
         # Load the MapDescriptor from the map.xml
-        self.map_descriptor = scripts.mapdescriptor.read_map_xml()
+        self.map_descriptor = scripts.mapdescriptor.read_map_xml(map_xml)
+        if logger.isEnabledFor(logging.INFO):
+            logger.info("Input file: {}".format(map_xml))
 
     def download(self):
         md = self.map_descriptor

@@ -65,7 +65,8 @@ class Downloader(object):
                     buf = r.read(BUFFER_SIZE)
                     f.write(buf)
                     item.downloaded_bytes += len(buf)
-                    if logger.isEnabledFor(logging.DEBUG):
+                    if item.downloaded_bytes % (BUFFER_SIZE * 25) == 0 \
+                            and logger.isEnabledFor(logging.DEBUG):
                         msg = "Downloaded: {}/{}"
                         logger.debug(msg.format(item.downloaded_bytes,
                                                 item.expected_size))

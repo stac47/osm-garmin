@@ -14,7 +14,6 @@ import os.path
 from scripts.httputils import Downloader
 from zipfile import ZipFile
 import logging
-import shutil
 logger = logging.getLogger(__name__)
 
 # Output root folder
@@ -84,6 +83,8 @@ def update_java_lib():
             _downloader.add_item("/download/" + f,
                                  os.path.join(JAVA_LIB_DIR, f))
         _downloader.start()
+    elif logger.isEnabledFor(logging.INFO):
+        logger.info("Java dependencies are up-to-date.")
     with ZipFile(os.path.join(JAVA_LIB_DIR, SPLITTER_ZIP), "r") as f:
         f.extractall(JAVA_LIB_DIR)
     with ZipFile(os.path.join(JAVA_LIB_DIR, MKGMAP_ZIP), "r") as f:
@@ -92,6 +93,5 @@ def update_java_lib():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
-    shutil.rmtree(DIST_DIR)
     create()
     update_java_lib()
