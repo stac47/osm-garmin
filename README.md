@@ -39,6 +39,10 @@ Screenshots
 The following screenshots were taken from a Garmin Edge 800. The rendering is
 also good on a Garmin Edge 605/705.
 
+The display is like what we can see on OpenStreetMap. Several POI are presented
+hereafters including the useful one: mountain pass with its elevation when
+available in OSM (picture in the middle).
+
 ![Screenshots](./doc/pictures/screenshots.png)
 
 Dependencies
@@ -46,8 +50,8 @@ Dependencies
 
 The project depends upon:
 
-+ Python 3.2
-+ Java 7
+- Python 3.2
+- Java 7
 
 Usage
 -----
@@ -60,6 +64,6 @@ usage: map.py [-h] [-i INPUTMAP]
 
 optional arguments:
   -h, --help            show this help message and exit
-    -i INPUTMAP, --inputmap INPUTMAP
-                            The input map descriptor file.
+  -i INPUTMAP, --inputmap INPUTMAP
+                        The input map descriptor file.
 ```
