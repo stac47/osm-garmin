@@ -74,5 +74,5 @@ class TestDistTree(unittest.TestCase):
         self.assertEqual(2, self.downloader.number_downloaded_files)
 
     def tearDown(self):
-        #shutil.rmtree(scripts.disttree.DIST_DIR)
+        shutil.rmtree(scripts.disttree.DIST_DIR)
         os.chdir(self.saved_cwd)
