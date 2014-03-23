@@ -32,6 +32,9 @@ class Downloader(object):
         self.host = parse_result.hostname
         self.port = port
         self.items = []
+        if logger.isEnabledFor(logging.DEBUG):
+            logger.debug("Ready to download from: {}:{}".format(self.host,
+                                                                self.port))
 
     def add_item(self, resource_uri, dst):
         self.items.append(DownloadItem(resource_uri, dst))
@@ -58,10 +61,14 @@ class Downloader(object):
         item.expected_size = int(r.getheader("Content-Length").split(",")[0])
         try:
             with open(item.dst, 'wb') as f:
-                while not r.closed:
+                while item.downloaded_bytes < item.expected_size:
                     buf = r.read(BUFFER_SIZE)
                     f.write(buf)
                     item.downloaded_bytes += len(buf)
+                    if logger.isEnabledFor(logging.DEBUG):
+                        msg = "Downloaded: {}/{}"
+                        logger.debug(msg.format(item.downloaded_bytes,
+                                                item.expected_size))
         finally:
             conn.close()
         if logger.isEnabledFor(logging.INFO):

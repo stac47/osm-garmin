@@ -20,7 +20,7 @@ def configLoggers():
     """ Configures the loggers to log into the distribution folder."""
 
     # First we ensure the dist folder structure is consistant.
-    scripts.disttree.create_dist_dir()
+    scripts.disttree.create()
 
     logger = logging.getLogger("scripts")
     logger.setLevel(logging.DEBUG)

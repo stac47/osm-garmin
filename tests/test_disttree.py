@@ -12,6 +12,7 @@ import os
 import os.path
 import shutil
 import scripts.disttree
+from scripts.disttree import create, update_java_lib
 from urllib.parse import urlparse
 from zipfile import ZipFile
 
@@ -23,14 +24,14 @@ class MockDownloader(object):
         self._items = dict()
         self.number_downloaded_files = 0
 
-    def add_item(self, resourceUri, dst):
-        self._items[resourceUri] = dst
+    def add_item(self, resource_uri, dst):
+        self._items[resource_uri] = dst
 
     def start(self):
         for k, v in self._items.items():
             parsed_url = urlparse(k)
             file_name = parsed_url.path.split("/")[-1]
-            with ZipFile(os.path.join(v, file_name), 'w') as f:
+            with ZipFile(v, 'w') as f:
                 basename = file_name.split(".")[0]
                 f.write(__file__,
                         os.path.join(basename,
@@ -45,12 +46,13 @@ class TestDistTree(unittest.TestCase):
         os.chdir(os.path.dirname(__file__))
         # Do not download for real
         self.downloader = MockDownloader()
-        scripts.disttree.DistTree.downloader = self.downloader
+        scripts.disttree._downloader = self.downloader
 
     def test_disttree_creation(self):
-        dist = scripts.disttree.DistTree()
         self.assertEqual(0, self.downloader.number_downloaded_files)
-        dist.create_dist_dir()
+        create()
+        self.assertEqual(0, self.downloader.number_downloaded_files)
+        update_java_lib()
         self.assertEqual(2, self.downloader.number_downloaded_files)
         self.assertTrue(os.path.exists(scripts.disttree.DIST_DIR))
         self.assertTrue(os.path.exists(scripts.disttree.SPLITTER_OUT_DIR))
@@ -70,9 +72,10 @@ class TestDistTree(unittest.TestCase):
         self.assertTrue(os.path.exists(scripts.disttree.MKGMAP_JAR))
 
         # If we try again to build the disttree, no download of the jars
-        dist.create_dist_dir()
+        update_java_lib()
         self.assertEqual(2, self.downloader.number_downloaded_files)
 
     def tearDown(self):
         shutil.rmtree(scripts.disttree.DIST_DIR)
         os.chdir(self.saved_cwd)
+        scripts.disttree._downloader = None

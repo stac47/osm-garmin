@@ -21,21 +21,10 @@ import scripts.mapdescriptor
 import logging
 logger = logging.getLogger(__name__)
 
-# Reflects the structure of the project
-LIB_DIR = "lib"
 STYLES_DIR = "styles"
 
-# Name of splitter directory (used for lib and output)
-SPLITTER_DIR = "splitter"
-
-# Name of mkgmap directory (used for lib and output)
-MKGMAP_DIR = "mkgmap"
-
-# Path to Splitter JAR (tiles creator)
-SPLITTER_JAR = os.path.join(LIB_DIR, SPLITTER_DIR, "splitter.jar")
-
-# Path to mkgmap Jar (map creator)
-MKGMAP_JAR = os.path.join(LIB_DIR, MKGMAP_DIR, "mkgmap.jar")
+# First make sure the java dependencies are available in the disttree.
+disttree.update_java_lib()
 
 
 class MapCreator(object):
@@ -72,7 +61,7 @@ class MapCreator(object):
     def __split_map(self, filename):
         cmd_tpl = "java -Xmx1024M -jar %s --mapid=%s --output-dir=%s %s"
         print(cmd_tpl)
-        cmd = cmd_tpl % (SPLITTER_JAR, str(self.last_mapid),
+        cmd = cmd_tpl % (disttree.SPLITTER_JAR, str(self.last_mapid),
                          disttree.SPLITTER_OUT_DIR, filename)
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(cmd)
@@ -97,7 +86,7 @@ class MapCreator(object):
         osm_files = [os.path.join(disttree.SPLITTER_OUT_DIR, f)
                      for f in os.listdir(disttree.SPLITTER_OUT_DIR)
                      if f.endswith(".osm.pbf")]
-        cmd = wrappers.MkgmapWrapper(jar_path=MKGMAP_JAR)
+        cmd = wrappers.MkgmapWrapper(jar_path=disttree.MKGMAP_JAR)
         cmd.verbose()
         cmd.output_dir(disttree.MKGMAP_OUT_DIR)
         cmd.index()

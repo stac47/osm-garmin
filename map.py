@@ -18,8 +18,12 @@ scripts.logconfig.configLoggers()
 from scripts.mapcreator import MapCreator
 
 
-if __name__ == "__main__":
+def main():
     mp = MapCreator()
     mp.download()
     mp.split_maps()
     mp.create_maps_from_tiles()
+
+
+if __name__ == "__main__":
+    main()
