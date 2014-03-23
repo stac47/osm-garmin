@@ -52,6 +52,14 @@ The project depends upon:
 Usage
 -----
 
-This is not a definitive usage guide:
+Current CLI. This will probably change in the future.
 
-    stac@debian:~/osm-garmin$ python3 map.py
+```
+stac@mercure:~/development/osm-garmin$ ./map.py --help
+usage: map.py [-h] [-i INPUTMAP]
+
+optional arguments:
+  -h, --help            show this help message and exit
+    -i INPUTMAP, --inputmap INPUTMAP
+                            The input map descriptor file.
+```
