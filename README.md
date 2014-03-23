@@ -33,6 +33,14 @@ The maps will be based on the Open Street Map project (OSM). Moreover, as I
 contribute to OSM, I also wanted to have an up-to-date map at least the day
 after I commit some work: I don't want to wait for a monthly realease.
 
+Screenshots
+-----------
+
+The following screenshots were taken from a Garmin Edge 800. The rendering is
+also good on a Garmin Edge 605/705.
+
+![Screenshots](./doc/pictures/screenshots.png)
+
 Dependencies
 ------------
 

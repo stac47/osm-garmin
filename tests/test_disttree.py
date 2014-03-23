@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # vi:set fileencoding=utf-8 :
 
 """
@@ -12,12 +12,13 @@ import os
 import os.path
 import shutil
 import scripts.disttree
-from scripts.disttree import create, update_java_lib
+import scripts.disttree as disttree
 from urllib.parse import urlparse
 from zipfile import ZipFile
 
 
 class MockDownloader(object):
+    """ Emulates Downloader dedicated to the download of java dependencies."""
 
     def __init__(self):
         super().__init__()
@@ -50,9 +51,9 @@ class TestDistTree(unittest.TestCase):
 
     def test_disttree_creation(self):
         self.assertEqual(0, self.downloader.number_downloaded_files)
-        create()
+        disttree.create()
         self.assertEqual(0, self.downloader.number_downloaded_files)
-        update_java_lib()
+        disttree.update_java_lib()
         self.assertEqual(2, self.downloader.number_downloaded_files)
         self.assertTrue(os.path.exists(scripts.disttree.DIST_DIR))
         self.assertTrue(os.path.exists(scripts.disttree.SPLITTER_OUT_DIR))
@@ -72,7 +73,18 @@ class TestDistTree(unittest.TestCase):
         self.assertTrue(os.path.exists(scripts.disttree.MKGMAP_JAR))
 
         # If we try again to build the disttree, no download of the jars
-        update_java_lib()
+        disttree.update_java_lib()
+        self.assertEqual(2, self.downloader.number_downloaded_files)
+
+        # Cleaning the dist folder
+        disttree.clean()
+        # All folders exist
+        self.assertTrue(os.path.exists(scripts.disttree.DIST_DIR))
+        self.assertTrue(os.path.exists(scripts.disttree.SPLITTER_OUT_DIR))
+        self.assertTrue(os.path.exists(scripts.disttree.MKGMAP_OUT_DIR))
+        self.assertTrue(os.path.exists(scripts.disttree.GEOFABRIK_LOCAL_DIR))
+        # The java libs have not been deleted so no download done.
+        disttree.update_java_lib()
         self.assertEqual(2, self.downloader.number_downloaded_files)
 
     def tearDown(self):

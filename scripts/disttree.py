@@ -11,9 +11,10 @@ Created on 2013-06-24
 """
 
 import os.path
+import shutil
+import logging
 from scripts.httputils import Downloader
 from zipfile import ZipFile
-import logging
 logger = logging.getLogger(__name__)
 
 # Output root folder
@@ -64,6 +65,15 @@ def create():
         os.mkdir(LOGGING_DIR)
     if not os.path.exists(JAVA_LIB_DIR):
         os.mkdir(JAVA_LIB_DIR)
+
+
+def clean():
+    """ Delete the content of the distribution tree except the lib folder."""
+    shutil.rmtree(GEOFABRIK_LOCAL_DIR)
+    shutil.rmtree(SPLITTER_OUT_DIR)
+    shutil.rmtree(MKGMAP_OUT_DIR)
+    shutil.rmtree(LOGGING_DIR)
+    create()
 
 
 def update_java_lib():
