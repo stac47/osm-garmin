@@ -45,7 +45,7 @@ class MapCreator(object):
         if logger.isEnabledFor(logging.INFO):
             logger.info("Input file: {}".format(map_xml))
 
-    def download(self):
+    def download(self, force_download=False):
         md = self.map_descriptor
         if len(md.fragments) == 0:
             raise Exception("No Fragment to download")
@@ -56,8 +56,9 @@ class MapCreator(object):
         for fragment in md.fragments:
             filename = fragment.split("/")[-1]
             dst = os.path.join(disttree.GEOFABRIK_LOCAL_DIR, filename)
-            self.downloaded_file_name.append(dst)
-            self.downloader.add_item(fragment, dst)
+            if not os.path.exists(dst) or force_download:
+                self.downloaded_file_name.append(dst)
+                self.downloader.add_item(fragment, dst)
         self.downloader.start()
 
     def __split_map(self, filename):

@@ -1,0 +1,16 @@
+<map>
+    <title>Autour de la France</title>
+    <version>1.0</version>
+    <author>stac</author>
+    <base-url>http://download.geofabrik.de</base-url>
+    <fragments>
+        <fragment src="/europe/france-latest.osm.bz2"/>
+        <fragment src="/europe/switzerland-latest.osm.bz2"/>
+        <fragment src="/europe/italy-latest.osm.bz2"/>
+        <fragment src="/europe/liechtenstein-latest.osm.bz2"/>
+        <fragment src="/europe/monaco-latest.osm.bz2"/>
+        <fragment src="/europe/austria-latest.osm.bz2"/>
+        <fragment src="/europe/andorra-latest.osm.bz2"/>
+        <fragment src="/europe/spain-latest.osm.bz2"/>
+    </fragments>
+</map>

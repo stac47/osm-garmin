@@ -22,12 +22,15 @@ _parser = argparse.ArgumentParser()
 _parser.add_argument("-i", "--inputmap", type=str,
                      help="The input map descriptor file.",
                      default="map.xml")
+_parser.add_argument("-f", "--force-download", action="store_true",
+                     help="Download all the maps",
+                     default=False)
 
 
 def main():
     args = _parser.parse_args()
     mp = MapCreator(args.inputmap)
-    mp.download()
+    mp.download(args.force_download)
     mp.split_maps()
     mp.create_maps_from_tiles()
 

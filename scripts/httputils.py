@@ -9,6 +9,7 @@ Created on 2013-05-27
 
 from http.client import HTTPConnection
 from urllib.parse import urlparse
+import multiprocessing as mp
 import logging
 logger = logging.getLogger(__name__)
 
@@ -43,11 +44,10 @@ class Downloader(object):
                                                                 dst))
 
     def start(self):
-        # First a basic sequential implementation
-        for item in self.items:
-            self.__single(item)
+        pool = mp.Pool(processes=4)
+        pool.map(self.single, self.items)
 
-    def __single(self, item):
+    def single(self, item):
         """ Downloads a file through HTTP protocol."""
         if logger.isEnabledFor(logging.INFO):
             logger.info("Downloading {}...".format(item.resource_uri))
@@ -77,13 +77,18 @@ class Downloader(object):
 
 
 if __name__ == "__main__":
-    url = "http://download.geofabrik.de/europe/france/alsace-latest.osm.bz2"
-    parse_result = urlparse(url)
-    host = parse_result.hostname
-    port = parse_result.port
-    path = parse_result.path
-    print(host)
-    downloader = Downloader(host, port)
-    downloader.add_item(path, "~/alsace.osm.bz2")
+    urls = [
+        "http://download.geofabrik.de/europe/france/alsace-latest.osm.bz2",
+        "http://download.geofabrik.de/europe/france/aquitaine-latest.osm.bz2"
+    ]
+    downloader = None
+    for url in urls:
+        parse_result = urlparse(url)
+        if downloader is None:
+            host = parse_result.hostname
+            port = parse_result.port
+            downloader = Downloader(host, port)
+        path = parse_result.path
+        downloader.add_item(path, "~/alsace.osm.bz2")
     downloader.start()
     print("Done. " + url)
