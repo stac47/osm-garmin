@@ -98,12 +98,12 @@ class MapCreator(object):
         cmd.family_name("Stac Map")
         cmd.series_name("Stac Series")
         cmd.style_file(STYLES_DIR)
-        cmd.style("edge-605-705")
+        cmd.style("garmin-edge")
         cmd.remove_short_arcs()
         cmd.generate_sea(["floodblocker"])
         for f in osm_files:
             cmd.input_file(f)
-        cmd.input_file(os.path.join(STYLES_DIR, "edge-605-705", "typ.txt"))
+        cmd.input_file(os.path.join(STYLES_DIR, "garmin-edge", "typ.txt"))
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug((str(cmd)))
         os.system(str(cmd))
