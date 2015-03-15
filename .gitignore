@@ -35,3 +35,6 @@ nosetests.xml
 .pydevproject
 .ropeproject/
 xmapnik.TYP
+
+cscope.*
+tags

@@ -46,6 +46,7 @@ class Downloader(object):
     def start(self):
         pool = mp.Pool(processes=4)
         pool.map(self.single, self.items)
+        return len(self.items)
 
     def single(self, item):
         """ Downloads a file through HTTP protocol."""

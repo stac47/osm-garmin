@@ -65,6 +65,12 @@ def create():
         os.mkdir(LOGGING_DIR)
     if not os.path.exists(JAVA_LIB_DIR):
         os.mkdir(JAVA_LIB_DIR)
+        _update_java_lib()
+
+
+def init():
+    shutil.rmtree(DIST_DIR)
+    create()
 
 
 def clean():
@@ -76,12 +82,10 @@ def clean():
     create()
 
 
-def update_java_lib():
+def _update_java_lib():
     """ Tests if the java libs are present and their version, and if
     needed, download and inflate them."""
 
-    if not os.path.exists(DIST_DIR):
-        create()
     files_to_download = []
     if not os.path.exists(MKGMAP_DIR):
         files_to_download.append(MKGMAP_ZIP)
@@ -104,4 +108,4 @@ def update_java_lib():
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
     create()
-    update_java_lib()
+    _update_java_lib()

@@ -13,26 +13,144 @@ Created on 2013-06-22
 @author : Laurent Stacul
 """
 
+import argparse
+import re
+from abc import ABCMeta, abstractmethod
+
 import scripts.logconfig
 scripts.logconfig.configLoggers()
-from scripts.mapcreator import MapCreator
-import argparse
+import scripts.mapcreator
+import scripts.disttree
 
 _parser = argparse.ArgumentParser()
 _parser.add_argument("-i", "--inputmap", type=str,
                      help="The input map descriptor file.",
                      default="map.xml")
-_parser.add_argument("-f", "--force-download", action="store_true",
-                     help="Download all the maps",
-                     default=False)
+_subparsers = _parser.add_subparsers(help="Sub-commands help")
+
+class Command(object, metaclass=ABCMeta):
+    """ Base class representing a user command entry."""
+
+    _commands = []
+
+    _command_regex = re.compile(r"^(\w+)Command$")
+
+    @staticmethod
+    @abstractmethod
+    def register_parser(parser):
+        pass
+
+    @classmethod
+    def register(cls):
+        m = re.match(Command._command_regex, cls.__name__)
+        if m:
+            cls.name = m.group(1).lower()
+        else:
+            msg = "Command class name must follow the <name>Command pattern"
+            raise Exception(msg)
+        Command._commands.append(cls)
+        sp = _subparsers.add_parser(cls.name)
+        sp.set_defaults(command=cls.name)
+        cls.register_parser(sp)
+
+    @staticmethod
+    def execute(s, args):
+        for c in Command._commands:
+            if c.name == s:
+                c()(args)
+
+    def __init__(self):
+        super().__init__()
+
+    def __call__(self, args):
+        print("Running [{}]".format(self.name))
+        self._do_run(args)
+        print("Finished [{}]".format(self.name))
+
+    @abstractmethod
+    def _do_run(self):
+        pass
+
+
+class AutoRegisterCommand(ABCMeta):
+
+    def __new__(cls, *args, **kwargs):
+        newclass = super().__new__(cls, *args, **kwargs)
+        newclass.register()
+        return newclass
+
+
+class InitCommand(Command, metaclass=AutoRegisterCommand):
+
+    @staticmethod
+    def register_parser(parser):
+        parser.help = "Init the working directory"
+
+    def __init__(self):
+        super().__init__()
+
+    def _do_run(self, args):
+        scripts.disttree.init()
+
+
+class CleanCommand(Command, metaclass=AutoRegisterCommand):
+
+    @staticmethod
+    def register_parser(parser):
+        parser.help = "Clean the working directory"
+
+    def __init__(self):
+        super().__init__()
+
+    def _do_run(self, args):
+        scripts.disttree.clean()
+
+
+class DownloadCommand(Command, metaclass=AutoRegisterCommand):
+
+    @staticmethod
+    def register_parser(parser):
+        parser.help = "Download OSM maps."
+
+    def __init__(self):
+        super().__init__()
+
+    def _do_run(self, args):
+        scripts.disttree.create()
+        if scripts.mapcreator.download(args.inputmap) == 0:
+            print("Nothing to download")
+
+
+class SplitCommand(Command, metaclass=AutoRegisterCommand):
+
+    @staticmethod
+    def register_parser(parser):
+        parser.help = "Split the maps into smaller tiles."
+
+    def __init__(self):
+        super().__init__()
+
+    def _do_run(self, args):
+        scripts.disttree.create()
+        scripts.mapcreator.split_maps()
+
+
+class BuildCommand(Command, metaclass=AutoRegisterCommand):
+
+    @staticmethod
+    def register_parser(parser):
+        parser.help = "Build the final gmapsupp file."
+
+    def __init__(self):
+        super().__init__()
+
+    def _do_run(self, args):
+        scripts.mapcreator.create_map_from_tiles()
 
 
 def main():
     args = _parser.parse_args()
-    mp = MapCreator(args.inputmap)
-    mp.download(args.force_download)
-    mp.split_maps()
-    mp.create_maps_from_tiles()
+    Command.execute(args.command, args)
 
 
 if __name__ == "__main__":

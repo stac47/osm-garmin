@@ -59,8 +59,11 @@ Usage
 Current CLI. This will probably change in the future.
 
 ```
-stac@mercure:~/development/osm-garmin$ ./map.py --help
-usage: map.py [-h] [-i INPUTMAP]
+usage: map.py [-h] [-i INPUTMAP] {init,clean,download,split,build} ...
+
+positional arguments:
+  {init,clean,download,split,build}
+                        Sub-commands help
 
 optional arguments:
   -h, --help            show this help message and exit
