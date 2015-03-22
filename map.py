@@ -16,6 +16,7 @@ Created on 2013-06-22
 import argparse
 import re
 from abc import ABCMeta, abstractmethod
+from datetime import datetime
 
 import scripts.logconfig
 scripts.logconfig.configLoggers()
@@ -63,9 +64,15 @@ class Command(object, metaclass=ABCMeta):
         super().__init__()
 
     def __call__(self, args):
-        print("Running [{}]".format(self.name))
+        start_time = datetime.utcnow()
+        print("{} - Running [{}]".format(start_time.isoformat(),
+                                         self.name))
         self._do_run(args)
-        print("Finished [{}]".format(self.name))
+        end_time = datetime.utcnow()
+        print("{} - Finished [{}]".format(end_time.isoformat(),
+                                          self.name))
+        elapsed_time = end_time - start_time
+        print("Elapsed time: {}".format(elapsed_time))
 
     @abstractmethod
     def _do_run(self):
