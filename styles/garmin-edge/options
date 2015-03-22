@@ -13,5 +13,12 @@
 name_tag =name:fr, name:ca, name:en, int_name, name
 
 # The levels specification for this style
+# Resolution Scale on device
+# 16           30km-12km
+# 18           8km-3km
+# 20           2km-800m
+# 22           500m-200m
+# 23           300m-80m
+# 24           120m-50mk
 #
 levels = 0:24, 1:22, 2:20, 3:18, 4:16

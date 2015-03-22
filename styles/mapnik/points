@@ -69,7 +69,6 @@ man_made=water_tower [0x1204 resolution 22]
 man_made=lighthouse [0x1206 resolution 21]
 man_made=windmill [0x6418 resolution 21]
 man_made=power_wind [0x6419 resolution 20]
-mountain_pass=yes {name '${name|def:}${ele|height:|def:}' } [0x6300 resolution 21]
 power=generator & power_source=wind [0x6400 resolution 20]
 power=tower [0x6417 resolution 21]
 

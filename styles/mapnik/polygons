@@ -87,4 +87,4 @@ waterway=dock | waterway=mill_pond [0x48 resolution 20]
 # buildings
 amenity=place_of_worship [0x36 resolution 23]
 railway=station | building=station [0x24 resolution 23]
-#building=* [0x13 resolution 24]
+building=* [0x13 resolution 24]
