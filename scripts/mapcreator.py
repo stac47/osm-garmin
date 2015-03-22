@@ -82,6 +82,7 @@ def create_map_from_tiles():
     cmd.output_dir(disttree.MKGMAP_OUT_DIR)
     cmd.index()
     cmd.gmapsupp()
+    cmd.route()
     cmd.family_id(42)
     cmd.family_name("Stac Map")
     cmd.series_name("Stac Series")
