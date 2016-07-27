@@ -44,7 +44,7 @@ def download(map_xml='map.xml'):
 
 
 def __split_map(filename, mapid):
-    cmd_tpl = "java -Xmx1024M -jar %s --mapid=%s --output-dir=%s %s"
+    cmd_tpl = "java -Xmx4096M -jar %s --mapid=%s --output-dir=%s %s"
     cmd = cmd_tpl % (disttree.SPLITTER_JAR, str(mapid),
                      disttree.SPLITTER_OUT_DIR, filename)
     if logger.isEnabledFor(logging.DEBUG):
@@ -89,6 +89,7 @@ def create_map_from_tiles():
     cmd.style_file(STYLES_DIR)
     cmd.style("garmin-edge")
     cmd.remove_short_arcs()
+    cmd.max_jobs(8)
     cmd.generate_sea(["floodblocker"])
     for f in osm_files:
         cmd.input_file(f)

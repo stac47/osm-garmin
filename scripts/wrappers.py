@@ -21,7 +21,7 @@ class CommandWrapper(object):
 class JavaCommandWrapper(CommandWrapper):
 
     def __init__(self, options=[]):
-        super().__init__("java", ["-Xmx1024M"])
+        super().__init__("java", ["-Xmx4096M"])
         self.command_line.extend(options)
 
 

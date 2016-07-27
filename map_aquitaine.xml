@@ -1,0 +1,9 @@
+<map>
+    <title>Autour de la France</title>
+    <version>1.0</version>
+    <author>stac</author>
+    <base-url>http://download.geofabrik.de</base-url>
+    <fragments>
+        <fragment src="/europe/france/aquitaine-latest.osm.bz2"/>
+    </fragments>
+</map>
