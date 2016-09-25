@@ -15,6 +15,8 @@ This script aims at creating map for garmin edge.
 import os
 import os.path
 import shutil
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import as_completed
 import logging
 logger = logging.getLogger(__name__)
 
@@ -50,6 +52,7 @@ def __split_map(filename, mapid):
     if logger.isEnabledFor(logging.DEBUG):
         logger.debug(cmd)
     os.system(cmd)
+    return True
 
 
 def __search_downloaded_files():
@@ -66,11 +69,14 @@ def split_maps():
     disttree.create()
     mapid = 63240001
     downloaded_file_name =  __search_downloaded_files()
-    for f in downloaded_file_name:
-        if logger.isEnabledFor(logging.DEBUG):
-            logger.debug(("%s -> %s" % (f, mapid)))
-        __split_map(f, mapid)
-        mapid += 100
+    with ThreadPoolExecutor() as executor:
+        futures = dict()
+        for f in downloaded_file_name:
+            futures[executor.submit(__split_map, f, mapid)] = f
+            mapid += 100
+        for future in as_completed(futures):
+            if future.result():
+                logger.info("Completed for {}".format(futures[future]))
 
 
 def create_map_from_tiles():

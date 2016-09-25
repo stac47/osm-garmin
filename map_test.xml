@@ -4,7 +4,7 @@
     <author>stac</author>
     <base-url>http://download.geofabrik.de</base-url>
     <fragments>
-        <fragment src="/europe/andorra-latest.osm.bz2"/>
+        <fragment src="/europe/france/provence-alpes-cote-d-azur-latest.osm.bz2"/>
         <fragment src="/europe/monaco-latest.osm.bz2"/>
     </fragments>
 </map>

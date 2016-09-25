@@ -35,13 +35,13 @@ JAVA_LIB_DIR = os.path.join(DIST_DIR, "lib")
 JAVA_LIB_SOURCE_URL = "http://www.mkgmap.org.uk"
 
 # Splitter
-SPLITTER_VERSION = "splitter-r437"
+SPLITTER_VERSION = "splitter-r439"
 SPLITTER_DIR = os.path.join(JAVA_LIB_DIR, SPLITTER_VERSION)
 SPLITTER_ZIP = SPLITTER_VERSION + ".zip"
 SPLITTER_JAR = os.path.join(SPLITTER_DIR, "splitter.jar")
 
 # Mkgmap Version
-MKGMAP_VERSION = "mkgmap-r3678"
+MKGMAP_VERSION = "mkgmap-r3695"
 MKGMAP_DIR = os.path.join(JAVA_LIB_DIR, MKGMAP_VERSION)
 MKGMAP_ZIP = MKGMAP_VERSION + ".zip"
 MKGMAP_JAR = os.path.join(MKGMAP_DIR, "mkgmap.jar")
