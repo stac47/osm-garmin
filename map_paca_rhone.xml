@@ -1,0 +1,14 @@
+<map>
+    <title>Grand Est Sud</title>
+    <version>1.0</version>
+    <author>stac</author>
+    <base-url>http://download.geofabrik.de</base-url>
+    <fragments>
+        <!-- France parts -->
+        <fragment src="/europe/france/provence-alpes-cote-d-azur-latest.osm.bz2"/>
+        <fragment src="/europe/france/rhone-alpes-latest.osm.bz2"/>
+        <fragment src="/europe/france/corse-latest.osm.bz2" />
+        <!-- Foreign countries -->
+        <fragment src="/europe/monaco-latest.osm.bz2"/>
+    </fragments>
+</map>

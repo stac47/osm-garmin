@@ -29,9 +29,9 @@
         <!-- Foreign countries -->
         <fragment src="/europe/switzerland-latest.osm.bz2"/>
         <fragment src="/europe/italy/nord-ovest-latest.osm.bz2"/>
-        <!-- <fragment src="/europe/italy-latest.osm.bz2"/> -->
         <fragment src="/europe/liechtenstein-latest.osm.bz2"/>
         <fragment src="/europe/monaco-latest.osm.bz2"/>
+        <fragment src="/europe/luxembourg-latest.osm.bz2"/>
         <!-- <fragment src="/europe/austria-latest.osm.bz2"/> -->
         <!-- <fragment src="/europe/spain-latest.osm.bz2"/> -->
     </fragments>

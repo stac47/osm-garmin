@@ -120,3 +120,9 @@ class MkgmapWrapper(JavaCommandWrapper):
 
     def poi_address(self):
         self.command_line.append("--poi-address")
+
+    def precomp_sea(self, input_file):
+        self.command_line.append("--precomp-sea={}".format(input_file))
+
+    def bounds(self, input_file):
+        self.command_line.append("--bounds={}".format(input_file))

@@ -96,7 +96,9 @@ def create_map_from_tiles():
     cmd.style("garmin-edge")
     cmd.remove_short_arcs()
     cmd.max_jobs(8)
-    cmd.generate_sea(["floodblocker"])
+    #cmd.generate_sea(["floodblocker"])
+    cmd.precomp_sea(disttree.PRECOM_SEAS)
+    cmd.bounds(disttree.PRECOM_BOUNDS)
     for f in osm_files:
         cmd.input_file(f)
     cmd.input_file(os.path.join(STYLES_DIR, "garmin-edge", "typ.txt"))

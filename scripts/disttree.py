@@ -30,9 +30,12 @@ GEOFABRIK_LOCAL_DIR = os.path.join(DIST_DIR, "geofabrik")
 # Logging directory
 LOGGING_DIR = os.path.join(DIST_DIR, "log")
 
+# Misc files (like the precomputed bounds and seas)
+MISC_FILES_DIR = os.path.join(DIST_DIR, "misc")
+
 # Directory to store mkgmap & splitter
 JAVA_LIB_DIR = os.path.join(DIST_DIR, "lib")
-JAVA_LIB_SOURCE_URL = "http://www.mkgmap.org.uk"
+MKGMAP_SITE_URL = "http://www.mkgmap.org.uk"
 
 # Splitter
 SPLITTER_VERSION = "splitter-r439"
@@ -46,8 +49,12 @@ MKGMAP_DIR = os.path.join(JAVA_LIB_DIR, MKGMAP_VERSION)
 MKGMAP_ZIP = MKGMAP_VERSION + ".zip"
 MKGMAP_JAR = os.path.join(MKGMAP_DIR, "mkgmap.jar")
 
-
-_downloader = Downloader(JAVA_LIB_SOURCE_URL)
+# Precomputed seas & bounds
+PLEIADES_SITE_URL = "http://osm2.pleiades.uni-wuppertal.de" #/bounds/latest/bounds.zip
+SEAS_ZIP = "sea.zip"
+PRECOM_SEAS = os.path.join(MISC_FILES_DIR, SEAS_ZIP)
+BOUNDS_ZIP = "bounds.zip"
+PRECOM_BOUNDS = os.path.join(MISC_FILES_DIR, BOUNDS_ZIP)
 
 
 def create():
@@ -65,7 +72,10 @@ def create():
         os.mkdir(LOGGING_DIR)
     if not os.path.exists(JAVA_LIB_DIR):
         os.mkdir(JAVA_LIB_DIR)
-        _update_java_lib()
+        _register_java_lib_to_download()
+    if not os.path.exists(MISC_FILES_DIR):
+        os.mkdir(MISC_FILES_DIR)
+        _register_misc_files_to_download()
 
 
 def init():
@@ -82,10 +92,22 @@ def clean():
     create()
 
 
-def _update_java_lib():
+def _register_misc_files_to_download():
+    downloader = Downloader(PLEIADES_SITE_URL)
+    if not os.path.exists(PRECOM_SEAS):
+        downloader.add_item("/sea/latest/sea.zip",
+                            PRECOM_SEAS)
+    if not os.path.exists(PRECOM_BOUNDS):
+        downloader.add_item("/bounds/latest/bounds.zip",
+                            PRECOM_BOUNDS)
+    downloader.start()
+
+
+def _register_java_lib_to_download():
     """ Tests if the java libs are present and their version, and if
     needed, download and inflate them."""
 
+    downloader = Downloader(MKGMAP_SITE_URL)
     files_to_download = []
     if not os.path.exists(MKGMAP_DIR):
         files_to_download.append(MKGMAP_ZIP)
@@ -94,9 +116,9 @@ def _update_java_lib():
     if len(files_to_download) > 0:
         for f in files_to_download:
             logger.info("%s to be updated" % f)
-            _downloader.add_item("/download/" + f,
+            downloader.add_item("/download/" + f,
                                  os.path.join(JAVA_LIB_DIR, f))
-        _downloader.start()
+        downloader.start()
     elif logger.isEnabledFor(logging.INFO):
         logger.info("Java dependencies are up-to-date.")
     with ZipFile(os.path.join(JAVA_LIB_DIR, SPLITTER_ZIP), "r") as f:
@@ -108,4 +130,4 @@ def _update_java_lib():
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
     create()
-    _update_java_lib()
+    #_register_java_lib_to_download()
